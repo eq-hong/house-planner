@@ -3,6 +3,7 @@ import { getGreeting } from '../apiClient'
 import Affirmation from './Affirmation'
 import Greeting from './Greeting'
 import Pokemon from './Pokemon'
+import Blathers from './Blathers'
 
 const App = () => {
 
@@ -10,7 +11,8 @@ const App = () => {
     <>
       <Greeting />
       <Affirmation />
-      <Pokemon />
+      <Blathers />
+      {/* <Pokemon /> */}
     </>
   )
 }
