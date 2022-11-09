@@ -12,3 +12,12 @@ export function getPokemon() {
 export function getPokemonSearch() {
   return request.get(`https://pokeapi.co/api/v2/pokemon/${searchTerm}`).then((res) => res.body)
 }
+
+// export function getDataLength() {
+//   return request.get(`https://acnhapi.com/v1/${data}`)
+//   .then ((response) => {
+//     console.log(response.body);
+//     const id = Object.values(response.body).length
+//     return id
+//   })
+// }

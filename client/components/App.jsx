@@ -9,7 +9,7 @@ const App = () => {
 
   return (
     <>
-      <Greeting />
+      {/* <Greeting /> */}
       <Affirmation />
       <Blathers />
       {/* <Pokemon /> */}
