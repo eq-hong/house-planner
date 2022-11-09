@@ -1,6 +1,7 @@
 const path = require('path')
 const express = require('express')
 const cors = require('cors')
+const request = require('superagent')
 
 const server = express()
 
@@ -13,6 +14,18 @@ server.get('/greeting', (req, res) => {
   let index = Math.floor(Math.random() * greetings.length)
   console.log(index)
   res.json({ greeting: greetings[index] })
+})
+
+server.get('/api/v1/affirmation', (req, res) => {
+  request
+  .get(`https://www.affirmations.dev`)
+  .then((response) => {
+    res.json(response.body)
+  })
+  .catch((err) => {
+    console.log(err)
+    res.sendStatus(500)
+  })
 })
 
 module.exports = server
