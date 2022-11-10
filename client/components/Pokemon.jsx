@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import request from 'superagent'
+import request, { search } from 'superagent'
 
 import { getPokemon, getPokemonSearch } from '../apiClient'
 import Spinner from './Spinner'
@@ -22,16 +22,11 @@ function Pokemon() {
 
   useEffect(() => {
     setIsLoading(true)
-    request
-      .get(`https://pokeapi.co/api/v2/pokemon/${searchTerm}`)
-      .then((response) => {
-        setPokemonData(response.body)
+      getPokemonSearch(searchTerm)
+      .then((pokemon) => {
+        setPokemonData(pokemon)
         setIsError(false)
       })
-      // getPokemon()
-      // .then(() => {
-      //   setIsError(false)
-      // })
       .finally(() => {
         setIsLoading(false)
       })

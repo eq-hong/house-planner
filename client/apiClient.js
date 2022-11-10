@@ -9,7 +9,7 @@ export function getPokemon() {
 }
 
 
-export function getPokemonSearch() {
+export function getPokemonSearch(searchTerm) {
   return request.get(`https://pokeapi.co/api/v2/pokemon/${searchTerm}`).then((res) => res.body)
 }
 
