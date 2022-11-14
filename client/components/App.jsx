@@ -17,7 +17,7 @@ const App = () => {
       </Routes>
       <footer><Affirmation /></footer>
 
-            {/* <Greeting /> */}
+      {/* <Greeting /> */}
       {/* <Blathers /> */}
       {/* <Pokemon /> */}
     </>
