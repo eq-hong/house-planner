@@ -6,6 +6,7 @@ import Greeting from './Greeting'
 import Pokemon from './Pokemon'
 import Blathers from './Blathers'
 import Home from './Home'
+import Form from './Form'
 
 const App = () => {
 
@@ -13,7 +14,7 @@ const App = () => {
     <>
       <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/test" element={<Blathers />} />
+      <Route path="/form" element={<Form />} />
       </Routes>
       <footer><Affirmation /></footer>
 

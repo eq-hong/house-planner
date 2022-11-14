@@ -6,16 +6,18 @@ import Spinner from './Spinner'
 
 function Home() {
 
-  
+  const style = {
+    marginTop: `20%`,
+  }
 
   return (
     <>
-    <section className='centre'>
-    <a href='/test'>
-    <div className='house-animation'/>
+    <section className='centre' style={style}>
+    <a href='/form'>
+    <div className='house-animation' />
     </a>
     
-    <div className='check-animation'/>
+    <div className='list-animation'/>
     </section>
   </>
   )
