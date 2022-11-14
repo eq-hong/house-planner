@@ -24,6 +24,24 @@
   background-size: cover;
 }
 
+.house-animation {
+  width: 150px;
+  height: 150px;
+  background: url("/images/63-home-gradient.png") no-repeat;
+  display: inline-block;
+  background-size: cover;
+}
+
+.house-animation:hover {
+  background: url("/images/63-home-gradient.gif") no-repeat;
+  background-size: cover;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+}
+
 /*
 * Skeleton V2.0.4
 * Copyright 2014, Dave Gamache

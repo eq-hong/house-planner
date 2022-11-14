@@ -38,8 +38,7 @@ if (isError) return <h1>{"Oops can't fetch 'em all today!"}</h1>
 
 return (
 <>
-<h3>Affirmation:</h3>
-<h4>{affirmation}</h4>
+<p><b>Affirmation |</b> {affirmation}</p>
 </>
 )
 

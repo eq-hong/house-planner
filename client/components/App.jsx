@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { getGreeting } from '../apiClient'
+import { Route, Routes } from 'react-router-dom'
+
 import Affirmation from './Affirmation'
 import Greeting from './Greeting'
 import Pokemon from './Pokemon'
@@ -10,9 +11,13 @@ const App = () => {
 
   return (
     <>
-      <Affirmation />
-      <Home />
-      {/* <Greeting /> */}
+      <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/test" element={<Blathers />} />
+      </Routes>
+      <footer><Affirmation /></footer>
+
+            {/* <Greeting /> */}
       {/* <Blathers /> */}
       {/* <Pokemon /> */}
     </>
