@@ -50,10 +50,10 @@ function Form() {
         <option value="L2">Level 2</option>
         <option value="L3">Level 3</option></select> </lable> <br></br>
     
-      North-facing (Daytime sun)  <input type="checkbox" id="test" name="test" value="test"/><br></br>
-      East-facing (Morning sun)  <input type="checkbox" id="test" name="test" value="test"/><br></br>
-      West-facing (Afternoon sun)  <input type="checkbox" id="test" name="test" value="test"/><br></br>
-      South-facing (Indirect sun)  <input type="checkbox" id="test" name="test" value="test"/><br></br>
+      <input type="checkbox" id="test" name="test" value="test"/> North-facing (Daytime sun)  <br></br>
+      <input type="checkbox" id="test" name="test" value="test"/> East-facing (Morning sun)  <br></br>
+      <input type="checkbox" id="test" name="test" value="test"/> West-facing (Afternoon sun)  <br></br>
+      <input type="checkbox" id="test" name="test" value="test"/> South-facing (Indirect sun)  <br></br>
 
       <br></br><button>Add</button>&nbsp;<button>Preview</button>
     </form>
