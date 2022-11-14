@@ -4,14 +4,16 @@ import Affirmation from './Affirmation'
 import Greeting from './Greeting'
 import Pokemon from './Pokemon'
 import Blathers from './Blathers'
+import Home from './Home'
 
 const App = () => {
 
   return (
     <>
-      {/* <Greeting /> */}
       <Affirmation />
-      <Blathers />
+      <Home />
+      {/* <Greeting /> */}
+      {/* <Blathers /> */}
       {/* <Pokemon /> */}
     </>
   )
