@@ -10,11 +10,13 @@ function Home() {
 
   return (
     <>
+    <section className='centre'>
     <a href='/test'>
     <div className='house-animation'/>
     </a>
     
     <div className='check-animation'/>
+    </section>
   </>
   )
 }
