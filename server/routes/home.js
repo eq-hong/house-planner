@@ -16,28 +16,30 @@ const db = require('../db')
 //     })
 // })
 
-// // GET api/v1/birds/:id
-// router.get('/:id', (req, res) => {
-//   db.getBird(req.params.id)
-//     .then((bird) => {
-//       res.json(bird)
-//     })
-//     .catch((err) => {
-//       console.log(err)
-//       res.sendStatus(500)
-//     })
-// })
 
-// GET api/v1/birds/:id
-router.get('/:id', (req, res) => {
-  db.getBird(req.params.id)
-    .then((bird) => {
-      res.json(bird)
+//GET api/v1/home/all
+router.get('/all', (req, res) => {
+  db.getAllRooms()
+    .then((rooms) => {
+      res.json(rooms)
     })
     .catch((err) => {
       console.log(err)
       res.sendStatus(500)
     })
 })
+
+//GET api/v1/home/:id
+router.get('/:id', (req, res) => {
+  db.getRoom(req.params.id)
+    .then((room) => {
+      res.json(room)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.sendStatus(500)
+    })
+})
+
 
 module.exports = router

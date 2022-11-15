@@ -1,5 +1,11 @@
 import request from 'superagent'
 
+
+
+
+
+ // ARCHIVE //
+
 export function getGreeting() {
   return request.get('/greeting').then((res) => res.body.greeting)
 }
@@ -21,3 +27,5 @@ export function getPokemonSearch(searchTerm) {
 //     return id
 //   })
 // }
+
+// ARCHIVE //

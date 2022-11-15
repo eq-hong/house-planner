@@ -1,15 +1,15 @@
 const config = require('./knexfile').development
 const connection = require('knex')(config)
 
-// module.exports = {
-//   getAllBirds,
-//   getBird,
-// }
+module.exports = {
+  getRoom,
+  getAllRooms,
+}
 
-// function getAllBirds(db = connection) {
-//   return db('birds_info').select()
-// }
+function getAllRooms(db = connection) {
+  return db('rooms').select()
+}
 
-// function getBird(id, db = connection) {
-//   return db('birds_info').where('id', id).select().first()
-// }
+function getRoom(id, db = connection) {
+  return db('rooms').where('id', id).select().first()
+}

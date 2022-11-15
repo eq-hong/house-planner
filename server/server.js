@@ -5,11 +5,14 @@ const request = require('superagent')
 
 const server = express()
 
-// const home = require('./routes/home')
+const home = require('./routes/home')
 
 server.use(express.json())
 server.use(express.static(path.join(__dirname, './public')))
 server.use(cors('*'))
+
+// Route for home...
+server.use('/api/v1/home', home)
 
 server.get('/greeting', (req, res) => {
   const greetings = ['hola', 'hi', 'hello', 'howdy']
