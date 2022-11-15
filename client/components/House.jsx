@@ -14,6 +14,9 @@ function House(){
     marginLeft: `2.5%`,
   }
 
+  const customPadding = {
+    marginBottom: `5px`,
+  }
 
   useEffect(() => {
     getAllRooms()
@@ -30,33 +33,34 @@ function House(){
   return (
     <>
     <section style={style} className="container">
-    <h4>HOUSE JSX</h4>
+    <h4>House brainstorm</h4>
       {rooms && rooms?.map((oneRoom, i) => {
         console.log(Boolean(oneRoom.east))
         const northWindow = Boolean(oneRoom.north)
         const eastWindow = Boolean(oneRoom.east)
         const westWindow = Boolean(oneRoom.west)
         const southWindow = Boolean(oneRoom.south)
+        const roomArea = (oneRoom.width)*(oneRoom.length)
 
         return (
           <div key={i}>
             <div className="row">
-            <div className="one column">
+            <div className="six columns">
             <Link to={`/house/room/${oneRoom.id}`} >
               <b>{oneRoom.roomName}</b>
             </Link>
             </div>
             <br></br>
-            <div className="ten columns">{oneRoom.roomNotes}</div>
+            <div className="ten columns" style={customPadding}>{oneRoom.roomNotes}</div>
             
             </div>
             <div className="row">
-            <div className="two columns"></div><br></br>
+            <div className="two columns"></div>
             <div className="two columns"><b>Room Type</b><br></br> {oneRoom.roomType}</div>
             <div className="two columns"><b>Priority</b> <br></br>{oneRoom.priority}</div>
-            <div className="two columns"><b>Size</b> <br></br>{oneRoom.width}w x {oneRoom.length}l</div>
+            <div className="two columns"><b>Size</b> <br></br>{oneRoom.width}m x {oneRoom.length}m <br></br> {roomArea}sqm</div>
             <div className="two columns"><b>Floor</b> <br></br>{oneRoom.floor}</div>
-            <div className="three columns"><b>Windows</b> <br></br>{ northWindow ? `north` : null } { southWindow ? 'south' : null } { eastWindow ? 'east' : null } { westWindow ? 'west' : null } </div>
+            <div className="three columns"><b>Facing</b> <br></br>{ northWindow ? `North` : null } { southWindow ? 'South' : null } { eastWindow ? 'East' : null } { westWindow ? 'West' : null } </div>
             </div>
             <p></p><br></br>
           </div>
