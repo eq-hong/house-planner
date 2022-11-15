@@ -57,6 +57,9 @@ function Form() {
 
       <br></br><button>Add</button>&nbsp;<button>Preview</button>
     </form>
+     <Link to={`/house`} >
+     <button className='add-button'>Back</button>
+     </Link>
     </section>
   </>
   )

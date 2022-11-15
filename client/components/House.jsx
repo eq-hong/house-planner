@@ -47,7 +47,7 @@ function House(){
             <div className="row">
             <div className="six columns">
             <Link to={`/house/room/${oneRoom.id}`} >
-              <b>{oneRoom.roomName}</b>
+              <button>{oneRoom.roomName}</button>
             </Link>
             </div>
             <br></br>
@@ -64,9 +64,11 @@ function House(){
             </div>
             <p></p><br></br>
           </div>
-
-        )
-      })}
+        )}
+      )}
+     <Link to={`/house/form`} >
+     <button className='add-button'>Add a Room</button>
+     </Link>
     </section>
     </>
   )
