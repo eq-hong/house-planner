@@ -14,6 +14,7 @@ server.use(cors('*'))
 // Route for home...
 server.use('/api/v1/home', home)
 
+
 server.get('/greeting', (req, res) => {
   const greetings = ['hola', 'hi', 'hello', 'howdy']
   let index = Math.floor(Math.random() * greetings.length)
@@ -32,6 +33,8 @@ server.get('/api/v1/affirmation', (req, res) => {
     res.sendStatus(500)
   })
 })
+
+server.use('/api/v1/*', (req, res) => res.sendStatus(404))
 
 server.get('*', (req, res) => {
   res.sendFile(path.resolve('server/public/index.html'))

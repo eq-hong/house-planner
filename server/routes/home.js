@@ -41,5 +41,22 @@ router.get('/:id', (req, res) => {
     })
 })
 
+//POST api/v1/home
+router.post('/', (req, res) => {
+  const post = req.body
+  const object = {
+    ...post,
+    // date_created: new Date(Date.now()),
+  }
+  db.addRoom(object)
+    .then((roomIdArr) => {
+      return db.getRoom(roomIdArr)
+
+    })
+    .then((newRoom) => {
+      res.json(newRoom)
+    })
+    .catch(console.error)
+})
 
 module.exports = router
