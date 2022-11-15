@@ -39,6 +39,16 @@ export function getAllRooms() {
     .catch(errorHandler('GET', 'api/v1/home/all'))
 }
 
+export function getRoom(id) {
+  return request
+    .get(`api/v1/home/${id}`)
+    .then((res) => {
+      res.body.forEach((room) => validateNoSnakeCase(room))
+      return res.body
+    })
+    .catch(errorHandler('GET', 'api/v1/home/:id'))
+}
+
 function errorHandler(method, route) {
   return (err) => {
     if (err.message === 'Not Found') {

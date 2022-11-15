@@ -8,6 +8,7 @@ import Blathers from './Blathers'
 import Homepage from './Homepage'
 import Form from './Form'
 import House from './House'
+import EditRoom from './EditRoom'
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
       <Route path="/" element={<Homepage />} />
       <Route path="/house" element={<House />} />
       <Route path="/house/form" element={<Form />} />
+      <Route path="/house/room/:id" element={<EditRoom />} />
       <Route path="/blathers" element={<Blathers/>} />
       <Route path="/pokemon" element={<Pokemon />} />
       </Routes>

@@ -26,7 +26,20 @@ function getAllRooms(db = connection) {
 }
 
 function getRoom(id, db = connection) {
-  return db('rooms').where('id', id).select().first()
+  return db('rooms').where('id', id).select(
+    'id', 
+    'room_name as roomName',
+    'room_type as roomType',
+    'room_notes as roomNotes',
+    'priority',
+    'width',
+    'length',
+    'north',
+    'east',
+    'west',
+    'south',
+    'floor'
+  ).first()
 }
 
 function addRoom(room, db = connection) {
