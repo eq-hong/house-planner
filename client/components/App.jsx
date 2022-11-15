@@ -15,12 +15,16 @@ const App = () => {
       <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/form" element={<Form />} />
+      <Route path="/blathers" element={<Blathers/>} />
+      <Route path="/pokemon" element={<Pokemon />} />
       </Routes>
       <footer><Affirmation /></footer>
 
       {/* <Greeting /> */}
       {/* <Blathers /> */}
       {/* <Pokemon /> */}
+
+    
     </>
   )
 }

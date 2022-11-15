@@ -3,7 +3,7 @@ import request from 'superagent'
 
 import Spinner from './Spinner'
 
-const initialData = 'fish'
+const initialData = 'bugs'
 const dataTypes = ['fish', 'sea', 'bugs', 'fossils']
 
 const idTest = 80

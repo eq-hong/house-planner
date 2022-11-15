@@ -61,20 +61,20 @@ function Pokemon() {
         alt={`sprite of ${pokemonData.name}`}
       />
 
-<h3>Types:</h3>
+<h5>Types:</h5>
       <ul>
         {pokemonData.types.map((typeData, index) => (
           <li key={index}>
-            <h4>{typeData.type.name}</h4>
+            {typeData.type.name}
           </li>
         ))}
       </ul>
 
-      <h3>Abilities:</h3>
+      <h5>Abilities:</h5>
       <ol>
         {pokemonData.abilities.map((abilityData, index) => (
           <li key={index}>
-            <h4>{abilityData.ability.name} {abilityData.is_hidden ? '(hidden ability)' : '(normal ability)'}</h4>
+            {abilityData.ability.name} {abilityData.is_hidden ? '(hidden ability)' : '(normal ability)'}
           </li>
         ))}
       </ol>
