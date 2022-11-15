@@ -5,6 +5,7 @@ module.exports = {
   getRoom,
   getAllRooms,
   addRoom,
+  deleteRoom,
 }
 
 function getAllRooms(db = connection) {
@@ -31,3 +32,7 @@ function getRoom(id, db = connection) {
 function addRoom(room, db = connection) {
   return db('rooms').insert(room)
 }
+
+function deleteRoom(id, db = connection) {
+  return db('rooms').where('id', id).delete()
+  }

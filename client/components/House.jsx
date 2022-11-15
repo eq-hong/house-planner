@@ -27,8 +27,17 @@ function House(){
         console.log(err)
       })
   }, [])
-
+  
   console.log(rooms);
+
+  // function removeRoom() {
+  //   deleteRoom(Number(id))
+  //     .then(() => {
+  //       fetchPosts()
+  //       navigate('/')
+  //     })
+  //     .catch((err) => console.log(err))
+  // }
 
   return (
     <>

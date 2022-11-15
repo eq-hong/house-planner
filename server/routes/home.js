@@ -59,4 +59,14 @@ router.post('/', (req, res) => {
     .catch(console.error)
 })
 
+//DELETE api/v1/home
+router.delete('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  db.deleteRoom(id)
+    .then(() => {
+      res.status(200).send('OK')
+    })
+    .catch(console.error)
+})
+
 module.exports = router
