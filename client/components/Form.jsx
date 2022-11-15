@@ -57,9 +57,11 @@ function Form() {
 
       <br></br><button>Add</button>&nbsp;<button>Preview</button>
     </form>
+    <div className='add-button'>
      <Link to={`/house`} >
-     <button className='add-button'>Back</button>
+     <button>Back</button> 
      </Link>
+     </div>
     </section>
   </>
   )

@@ -66,9 +66,15 @@ function House(){
           </div>
         )}
       )}
+      <div className='add-button'>
      <Link to={`/house/form`} >
-     <button className='add-button'>Add a Room</button>
+     <button >Add a Room</button>
      </Link>
+     &nbsp;
+     <Link to={`/`} >
+     <button>Homepage</button>
+     </Link>
+     </div>
     </section>
     </>
   )

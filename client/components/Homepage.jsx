@@ -13,7 +13,7 @@ function Home() {
   return (
     <>
     <section className='centre' style={style}>
-    <a href='/form'>
+    <a href='/house'>
     <div className='house-animation' />
     </a>
     
