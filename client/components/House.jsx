@@ -46,13 +46,13 @@ function House(){
         const roomArea = (oneRoom.width)*(oneRoom.length)
         const roomWidthPx = (oneRoom.width)*10
         const roomLengthPx = (oneRoom.length)*10
-        const northWindowDiagram = ( northWindow ? 'double' : 'solid')
-        const eastWindowDiagram = ( eastWindow ? 'double' : 'solid')
-        const westWindowDiagram = ( westWindow ? 'double' : 'solid')
-        const southWindowDiagram = ( southWindow ? 'double' : 'solid')
+        const northWindowDiagram = ( northWindow ? 'dashed' : 'solid')
+        const eastWindowDiagram = ( eastWindow ? 'dashed' : 'solid')
+        const westWindowDiagram = ( westWindow ? 'dashed' : 'solid')
+        const southWindowDiagram = ( southWindow ? 'dashed' : 'solid')
         
         const roomDiagram = {
-          border: `#636363`,
+          border: `#797979`,
           borderStyle: `${northWindowDiagram} ${eastWindowDiagram} ${southWindowDiagram} ${westWindowDiagram}`,
           width: `${roomWidthPx}px`,
           height: `${roomLengthPx}px`,

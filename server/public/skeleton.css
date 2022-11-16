@@ -15,6 +15,19 @@
   margin: auto;
 }
 
+.room-diagram-flex {
+  display: flex;
+
+  /*this centers the text horizontally*/
+  justify-content: center;
+
+  /*this centers the text vertically*/
+  align-items: center;
+  height: 100%;
+  font-size: 1rem;
+  color:#8f8f8f
+}
+
 footer {
   position: fixed;
   background-color: white;
@@ -28,6 +41,14 @@ footer {
   background-color: white;
   margin-bottom: 2.5%;
   bottom: 0;
+}
+
+.footer-gradient {
+  position: fixed;
+  bottom: 0;
+  height: 150px;
+  width: 100%;
+  background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgb(255, 255, 255));
 }
 
 .centre {
@@ -216,7 +237,8 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #222; }
+  color: #222; 
+  margin-bottom: 5%;}
 
 
 /* Typography

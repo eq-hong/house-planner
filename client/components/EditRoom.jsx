@@ -25,17 +25,18 @@ function Room() {
   const roomArea = (room.width)*(room.length)
   const roomWidthPx = (room.width)*50
   const roomLengthPx = (room.length)*50
-  const northWindowDiagram = ( northWindow ? 'double' : 'solid')
-  const eastWindowDiagram = ( eastWindow ? 'double' : 'solid')
-  const westWindowDiagram = ( westWindow ? 'double' : 'solid')
-  const southWindowDiagram = ( southWindow ? 'double' : 'solid')
+  const northWindowDiagram = ( northWindow ? 'dashed' : 'solid')
+  const eastWindowDiagram = ( eastWindow ? 'dashed' : 'solid')
+  const westWindowDiagram = ( westWindow ? 'dashed' : 'solid')
+  const southWindowDiagram = ( southWindow ? 'dashed' : 'solid')
   
   const roomDiagram = {
-    border: `#636363`,
-    borderWidth: `5px`,
+    border: `#797979`,
+    borderWidth: `4.5px`,
     borderStyle: `${northWindowDiagram} ${eastWindowDiagram} ${southWindowDiagram} ${westWindowDiagram}`,
     width: `${roomWidthPx}px`,
     height: `${roomLengthPx}px`,
+    textAlign: `center`,
   }
 
   useEffect(() => {
@@ -126,7 +127,11 @@ function Room() {
     </section>
     <section>
       
-        <div className='centre-room-diagram' style={roomDiagram}></div>
+        <div className='centre-room-diagram' style={roomDiagram}>
+          <div className='room-diagram-flex'>
+          <p>{room.room_name}<br></br>{roomArea}sqm</p>
+          </div>
+          </div>
        
     </section>
   </>

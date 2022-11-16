@@ -24,6 +24,8 @@ const App = () => {
       </Routes>
       <footer><Affirmation /></footer>
 
+      {/* <div className='footer-gradient'></div> */}
+
       {/* <Greeting /> */}
       {/* <Blathers /> */}
       {/* <Pokemon /> */}
