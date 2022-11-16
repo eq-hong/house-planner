@@ -64,7 +64,7 @@ function House(){
             <div className="two columns"><b>Floor</b> <br></br>{oneRoom.floor}</div>
             <div className="three columns"><b>Facing</b> <br></br>{ northWindow ? `North` : null } { southWindow ? 'South' : null } { eastWindow ? 'East' : null } { westWindow ? 'West' : null } </div>
             </div>
-            <p></p><br></br>
+            <br></br>
           </div>
         )}
       )}

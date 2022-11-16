@@ -42,6 +42,20 @@ export function getRoom(id) {
     .catch(errorHandler('GET', 'api/v1/house/:id'))
 }
 
+export function addRoom(newRoom) {
+  console.log(newRoom)
+  return request
+    .post(`${serverPrefix}/api/v1/house`)
+    .send(newRoom)
+    .then((res) => {
+      console.log(res.body);
+      // validateNoSnakeCase(res.body)
+      // validatePostResponse('POST', '/api/v1/house', res.body)
+      return res.body
+    })
+    .catch(errorHandler('POST', '/api/v1/house'))
+}
+
 export function deleteRoom(id) {
   return request
     .del(`${serverPrefix}/api/v1/house/${id}`)
@@ -65,6 +79,20 @@ function validateNoSnakeCase(response) {
   const hasSnakeCase = Object.keys(response).some((key) => key.includes('_'))
   if (hasSnakeCase) {
     throw Error('Error: you should not be returning properties in snake_case')
+  }
+}
+
+function validatePostResponse(method, route, post) {
+  if (!post) {
+    throw Error(`Error: ${method} ${route} should return a blog post`)
+  }
+
+  const { title, text } = post
+
+  if (!title || !text) {
+    throw Error(
+      `Error: ${method} ${route} is not returning a correct blog post`
+    )
   }
 }
 

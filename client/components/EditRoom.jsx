@@ -39,14 +39,16 @@ function Room() {
       .catch((err) => console.log(err))
   }
 
-  function handleChange(event) {
-    setRoom(event.target.value)
+  // function editRoom(evt){
+  //   evt.preventDefault()
+  //   updateRoom(id, room)
+  // }
+
+  function handleChange(evt) {
+    setRoom(evt.target.value)
   }
 
-  // function handleAdd() {
-  //   dispatch(addWombat(newWombat))
-  //   setNewWombat('')
-  // }
+
 
   return (
     <>
@@ -74,8 +76,8 @@ function Room() {
 
         Floor  <br></br> <select id="floor" name="floor" value={room.floor}>
           <option value="Ground / Level 1">Ground / Level 1</option>
-          <option value="L2">Level 2</option>
-          <option value="L3">Level 3</option></select>  <br></br>
+          <option value="Level 2">Level 2</option>
+          <option value="Level 3">Level 3</option></select>  <br></br>
       
         <input type="checkbox" id="North" name="North" checked={room.north}/> North-facing (Daytime sun)  <br></br>
         <input type="checkbox" id="East" name="East" checked={room.east}/> East-facing (Morning sun)  <br></br>
