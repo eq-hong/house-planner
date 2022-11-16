@@ -9,24 +9,33 @@ import { getRoom, deleteRoom, updateRoom } from '../apiClient'
 function Room() {
   const navigate = useNavigate()
   const { id } = useParams()
-  const [room, setRoom] = useState({
-    room_name: '',
-    room_type: '',
-    room_notes: '',
-    priority: '',
-    width: '',
-    length: '',
-    north: '',
-    east: '',
-    south: '',
-    floor: '',
-  })
+  const [room, setRoom] = useState({})
 
   // console.log(id);
 
   const style = {
     marginTop: `2.5%`,
     marginLeft: `2.5%`,
+  }
+
+  const northWindow = Boolean(room.north)
+  const eastWindow = Boolean(room.east)
+  const westWindow = Boolean(room.west)
+  const southWindow = Boolean(room.south)
+  const roomArea = (room.width)*(room.length)
+  const roomWidthPx = (room.width)*50
+  const roomLengthPx = (room.length)*50
+  const northWindowDiagram = ( northWindow ? 'double' : 'solid')
+  const eastWindowDiagram = ( eastWindow ? 'double' : 'solid')
+  const westWindowDiagram = ( westWindow ? 'double' : 'solid')
+  const southWindowDiagram = ( southWindow ? 'double' : 'solid')
+  
+  const roomDiagram = {
+    border: `#636363`,
+    borderWidth: `5px`,
+    borderStyle: `${northWindowDiagram} ${eastWindowDiagram} ${southWindowDiagram} ${westWindowDiagram}`,
+    width: `${roomWidthPx}px`,
+    height: `${roomLengthPx}px`,
   }
 
   useEffect(() => {
@@ -61,15 +70,16 @@ function Room() {
   }
 
   function handleChange(event) {
-    setRoom({ ...Room,  [event.target.name]: event.target.value })
+    setRoom({ [event.target.name]: event.target.value })
   }
 
   console.log(room);
   console.log('console.log room')
 
+
   return (
     <>
-    <section className='' style={style}>
+    <section style={style}>
       <h4>Room Form</h4>
       <form>
         Room Name <br></br> <input name="room_name" onChange={handleChange} value={room.room_name} placeholder="eg. main bedroom" /><br></br>
@@ -113,6 +123,11 @@ function Room() {
         </Link>
       </div>
       
+    </section>
+    <section>
+      
+        <div className='centre-room-diagram' style={roomDiagram}></div>
+       
     </section>
   </>
   )

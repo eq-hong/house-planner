@@ -1,3 +1,19 @@
+.box {
+  border: #636363;
+  border-style: solid;
+  height: 150px;
+  width: 150px;
+}
+
+.centre-room-diagram {
+  position: absolute;
+  top:0;
+  bottom: 10%;
+  left: 10%;
+  right: 0;
+  
+  margin: auto;
+}
 
 footer {
   position: fixed;

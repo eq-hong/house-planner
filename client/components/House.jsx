@@ -19,6 +19,7 @@ function House(){
     marginBottom: `5px`,
   }
 
+
   useEffect(() => {
     getAllRooms()
       .then((room) => {
@@ -43,6 +44,19 @@ function House(){
         const westWindow = Boolean(oneRoom.west)
         const southWindow = Boolean(oneRoom.south)
         const roomArea = (oneRoom.width)*(oneRoom.length)
+        const roomWidthPx = (oneRoom.width)*10
+        const roomLengthPx = (oneRoom.length)*10
+        const northWindowDiagram = ( northWindow ? 'double' : 'solid')
+        const eastWindowDiagram = ( eastWindow ? 'double' : 'solid')
+        const westWindowDiagram = ( westWindow ? 'double' : 'solid')
+        const southWindowDiagram = ( southWindow ? 'double' : 'solid')
+        
+        const roomDiagram = {
+          border: `#636363`,
+          borderStyle: `${northWindowDiagram} ${eastWindowDiagram} ${southWindowDiagram} ${westWindowDiagram}`,
+          width: `${roomWidthPx}px`,
+          height: `${roomLengthPx}px`,
+        }
 
         return (
           <div key={i}>
@@ -64,6 +78,7 @@ function House(){
             <div className="two columns"><b>Floor</b> <br></br>{oneRoom.floor}</div>
             <div className="three columns"><b>Facing</b> <br></br>{ northWindow ? `North` : null } { southWindow ? 'South' : null } { eastWindow ? 'East' : null } { westWindow ? 'West' : null } </div>
             </div>
+            <div style={roomDiagram}></div>
             <br></br>
             <hr className='remove-margin'></hr>
           </div>
