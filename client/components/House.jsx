@@ -89,17 +89,3 @@ function House(){
   )
 }
 export default House
-
-
-{/* <section>
-{rooms && rooms?.rooms.map((oneRoom, i) => {
-  console.log(oneRoom)
-  return (
-    <Link to={`/room/${oneRoom.id}`} key={i}>
-      <div>
-        <h2>{oneRoom.name}</h2>
-      </div>
-    </Link>
-  )
-})}
-</section> */}

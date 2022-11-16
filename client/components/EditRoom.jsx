@@ -9,7 +9,7 @@ import { getRoom } from '../apiClient'
 function Room() {
   const [room, setRoom] = useState('')
   const { id } = useParams()
-  console.log(id);
+  // console.log(id);
 
   const style = {
     marginTop: `2.5%`,
@@ -20,13 +20,14 @@ function Room() {
     getRoom(id)
       .then((data) => {
         setRoom(data)
+        // console.log(data);
       })
       .catch((err) => {
         console.log(err)
       })
   }, [])
 
-  console.log(room);
+  // console.log(room);
 
   function handleChange(event) {
     setRoom(event.target.value)
@@ -42,29 +43,29 @@ function Room() {
     <section className='' style={style}>
       <h4>Room Form</h4>
     <form>
-      <lable>Room Name <br></br> <input name="room name" onChange={handleChange} value={room.roomName} /></lable><br></br>
+      <label>Room Name <br></br> <input name="room name" onChange={handleChange} value={room.roomName} /></label><br></br>
       
-      <lable>Room Type <br></br> <select id="room type" name="room type">
+      <label>Room Type <br></br> <select id="room type" name="room type">
         <option value="Bedroom">Bedroom</option>
         <option value="Bathroom">Bathroom</option>
         <option value="Living">Living</option>
         <option value="Kitchen">Kitchen</option>
-        <option value="Other">Other</option></select> </lable> <br></br>
+        <option value="Other">Other</option></select> </label> <br></br>
       
-      <lable>Room Notes <br></br> <textarea name="room notes" onChange={handleChange} placeholder="eg. large main bedroom with ensuite"/></lable> <br></br>
+      <label>Room Notes <br></br> <textarea name="room notes" onChange={handleChange} placeholder="eg. large main bedroom with ensuite"/></label> <br></br>
       
-      <lable>Priority  <br></br> <select id="priority" name="priority">
+      <label>Priority  <br></br> <select id="priority" name="priority">
         <option value="High">High</option>
         <option value="Mid">Mid</option>
-        <option value="Low">Low</option></select> </lable> <br></br>
+        <option value="Low">Low</option></select> </label> <br></br>
 
-      <lable>Room Width <br></br> <input name="test" onChange={handleChange} placeholder="eg. 3" /></lable><br></br>
-      <lable>Room Length <br></br> <input name="test" onChange={handleChange} placeholder="eg. 3" /></lable><br></br>
+      <label>Room Width <br></br> <input name="test" onChange={handleChange} placeholder="eg. 3" /></label><br></br>
+      <label>Room Length <br></br> <input name="test" onChange={handleChange} placeholder="eg. 3" /></label><br></br>
 
-      <lable>Floor  <br></br> <select id="floor" name="floor">
+      <label>Floor  <br></br> <select id="floor" name="floor">
         <option value="Ground">Ground / Level 1</option>
         <option value="L2">Level 2</option>
-        <option value="L3">Level 3</option></select> </lable> <br></br>
+        <option value="L3">Level 3</option></select> </label> <br></br>
     
       <input type="checkbox" id="test" name="test" value="test"/> North-facing (Daytime sun)  <br></br>
       <input type="checkbox" id="test" name="test" value="test"/> East-facing (Morning sun)  <br></br>

@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const request = require('superagent')
+// const request = require('superagent')
 const db = require('../db')
 
 // //GET api/v1/birds
@@ -19,6 +19,7 @@ const db = require('../db')
 
 //GET api/v1/home/all
 router.get('/all', (req, res) => {
+  console.log('hit1');
   db.getAllRooms()
     .then((rooms) => {
       res.json(rooms)
@@ -31,6 +32,7 @@ router.get('/all', (req, res) => {
 
 //GET api/v1/home/:id
 router.get('/:id', (req, res) => {
+  console.log('hit2');
   db.getRoom(req.params.id)
     .then((room) => {
       res.json(room)

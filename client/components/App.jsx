@@ -22,7 +22,7 @@ const App = () => {
       <Route path="/blathers" element={<Blathers/>} />
       <Route path="/pokemon" element={<Pokemon />} />
       </Routes>
-      <footer><Affirmation /></footer>
+      {/* <footer><Affirmation /></footer> */}
 
       {/* <Greeting /> */}
       {/* <Blathers /> */}

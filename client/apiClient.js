@@ -1,4 +1,5 @@
 import request from 'superagent'
+const serverPrefix = 'http://localhost:3000'
 
  // ARCHIVE //
 
@@ -15,15 +16,6 @@ export function getPokemonSearch(searchTerm) {
   return request.get(`https://pokeapi.co/api/v2/pokemon/${searchTerm}`).then((res) => res.body)
 }
 
-// export function getDataLength() {
-//   return request.get(`https://acnhapi.com/v1/${data}`)
-//   .then ((response) => {
-//     console.log(response.body);
-//     const id = Object.values(response.body).length
-//     return id
-//   })
-// }
-
 // ARCHIVE //
 
 
@@ -31,7 +23,7 @@ export function getPokemonSearch(searchTerm) {
 
 export function getAllRooms() {
   return request
-    .get('api/v1/home/all')
+    .get(`${serverPrefix}/api/v1/home/all`)
     .then((res) => {
       res.body.forEach((room) => validateNoSnakeCase(room))
       return res.body
@@ -40,10 +32,11 @@ export function getAllRooms() {
 }
 
 export function getRoom(id) {
+  console.log(id);
   return request
-    .get(`api/v1/home/${id}`)
+    .get(`${serverPrefix}/api/v1/home/${id}`)
     .then((res) => {
-      res.body.forEach((room) => validateNoSnakeCase(room))
+      console.log(res.body)
       return res.body
     })
     .catch(errorHandler('GET', 'api/v1/home/:id'))
@@ -68,18 +61,6 @@ function validateNoSnakeCase(response) {
   }
 }
 
-function validatePostResponse(method, route, post) {
-  if (!post) {
-    throw Error(`Error: ${method} ${route} should return a blog post`)
-  }
 
-  const { title, text } = post
-
-  if (!title || !text) {
-    throw Error(
-      `Error: ${method} ${route} is not returning a correct blog post`
-    )
-  }
-}
 
 // from charlottes-web-log-api END //
