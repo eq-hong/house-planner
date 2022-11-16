@@ -65,6 +65,7 @@ function House(){
             <div className="three columns"><b>Facing</b> <br></br>{ northWindow ? `North` : null } { southWindow ? 'South' : null } { eastWindow ? 'East' : null } { westWindow ? 'West' : null } </div>
             </div>
             <br></br>
+            <hr className='remove-margin'></hr>
           </div>
         )}
       )}
