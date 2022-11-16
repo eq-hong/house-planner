@@ -43,34 +43,34 @@ function Room() {
     <section className='' style={style}>
       <h4>Room Form</h4>
     <form>
-      <label>Room Name <br></br> <input name="room name" onChange={handleChange} value={room.roomName} /></label><br></br>
+      Room Name <br></br> <input name="room name" onChange={handleChange} value={room.roomName} /><br></br>
       
-      <label>Room Type <br></br> <select id="room type" name="room type">
+      Room Type <br></br> <select id="room type" name="room type" value={room.roomType}>
         <option value="Bedroom">Bedroom</option>
         <option value="Bathroom">Bathroom</option>
         <option value="Living">Living</option>
         <option value="Kitchen">Kitchen</option>
-        <option value="Other">Other</option></select> </label> <br></br>
+        <option value="Other">Other</option></select>  <br></br>
       
-      <label>Room Notes <br></br> <textarea name="room notes" onChange={handleChange} placeholder="eg. large main bedroom with ensuite"/></label> <br></br>
+      Room Notes <br></br> <textarea name="room notes" onChange={handleChange} value={room.roomNotes}/> <br></br>
       
-      <label>Priority  <br></br> <select id="priority" name="priority">
+      Priority  <br></br> <select id="priority" name="priority" value={room.priority}>
         <option value="High">High</option>
         <option value="Mid">Mid</option>
-        <option value="Low">Low</option></select> </label> <br></br>
+        <option value="Low">Low</option></select>  <br></br>
 
-      <label>Room Width <br></br> <input name="test" onChange={handleChange} placeholder="eg. 3" /></label><br></br>
-      <label>Room Length <br></br> <input name="test" onChange={handleChange} placeholder="eg. 3" /></label><br></br>
+      Room Width <br></br> <input name="test" onChange={handleChange} value={room.width} /><br></br>
+      Room Length <br></br> <input name="test" onChange={handleChange} value={room.length} /><br></br>
 
-      <label>Floor  <br></br> <select id="floor" name="floor">
-        <option value="Ground">Ground / Level 1</option>
+      Floor  <br></br> <select id="floor" name="floor" value={room.floor}>
+        <option value="Ground / Level 1">Ground / Level 1</option>
         <option value="L2">Level 2</option>
-        <option value="L3">Level 3</option></select> </label> <br></br>
+        <option value="L3">Level 3</option></select>  <br></br>
     
-      <input type="checkbox" id="test" name="test" value="test"/> North-facing (Daytime sun)  <br></br>
-      <input type="checkbox" id="test" name="test" value="test"/> East-facing (Morning sun)  <br></br>
-      <input type="checkbox" id="test" name="test" value="test"/> West-facing (Afternoon sun)  <br></br>
-      <input type="checkbox" id="test" name="test" value="test"/> South-facing (Indirect sun)  <br></br>
+      <input type="checkbox" id="North" name="North" checked={room.north}/> North-facing (Daytime sun)  <br></br>
+      <input type="checkbox" id="East" name="East" checked={room.east}/> East-facing (Morning sun)  <br></br>
+      <input type="checkbox" id="West" name="West" checked={room.west}/> West-facing (Afternoon sun)  <br></br>
+      <input type="checkbox" id="South" name="South" checked={room.south}/> South-facing (Indirect sun)  <br></br>
 
       <br></br><button>Update</button>&nbsp;<button>Preview</button>
     </form>
