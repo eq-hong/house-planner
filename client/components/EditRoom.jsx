@@ -58,6 +58,7 @@ function Room() {
         Room Name <br></br> <input name="room name" onChange={handleChange} value={room.roomName} /><br></br>
         
         Room Type <br></br> <select id="room type" name="room type" value={room.roomType}>
+          <option value="" disabled>Select type</option>
           <option value="Bedroom">Bedroom</option>
           <option value="Bathroom">Bathroom</option>
           <option value="Living">Living</option>
@@ -67,6 +68,7 @@ function Room() {
         Room Notes <br></br> <textarea name="room notes" onChange={handleChange} value={room.roomNotes}/> <br></br>
         
         Priority  <br></br> <select id="priority" name="priority" value={room.priority}>
+          <option value="" disabled>Select priority</option>
           <option value="High">High</option>
           <option value="Mid">Mid</option>
           <option value="Low">Low</option></select>  <br></br>
@@ -75,6 +77,7 @@ function Room() {
         Room Length <br></br> <input name="test" onChange={handleChange} value={room.length} /><br></br>
 
         Floor  <br></br> <select id="floor" name="floor" value={room.floor}>
+          <option value="" disabled>Select floor</option>
           <option value="Ground / Level 1">Ground / Level 1</option>
           <option value="Level 2">Level 2</option>
           <option value="Level 3">Level 3</option></select>  <br></br>

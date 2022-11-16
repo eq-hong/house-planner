@@ -32,28 +32,38 @@ export function getAllRooms() {
 }
 
 export function getRoom(id) {
-  console.log(id);
+  // console.log(id);
   return request
     .get(`${serverPrefix}/api/v1/house/${id}`)
     .then((res) => {
-      console.log(res.body)
+      // console.log(res.body)
       return res.body
     })
     .catch(errorHandler('GET', 'api/v1/house/:id'))
 }
 
 export function addRoom(newRoom) {
-  console.log(newRoom)
+  console.log('console.log inside addRoom apiClient')
+  // console.log(newRoom)
   return request
     .post(`${serverPrefix}/api/v1/house/all`)
     .send(newRoom)
     .then((res) => {
+      console.log('inside .then');
       console.log(res.body);
-      // validateNoSnakeCase(res.body)
-      // validatePostResponse('POST', '/api/v1/house/all', res.body)
       return res.body
     })
     .catch(errorHandler('POST', '/api/v1/house'))
+}
+
+export function updateRoom(id, room) {
+  return request
+    .patch(`${serverPrefix}/api/v1/house/${id}`)
+    .send(room)
+    .then((res) => {
+      return res.body
+    })
+    .catch(errorHandler('PATCH', 'api/v1/house/:id'))
 }
 
 export function deleteRoom(id) {

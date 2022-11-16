@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-//POST api/v1/house
+//POST api/v1/house/all
 router.post('/all', (req, res) => {
   const post = req.body
   const object = {
@@ -57,6 +57,23 @@ router.post('/all', (req, res) => {
     })
     .then((newRoom) => {
       res.json(newRoom)
+    })
+    .catch(console.error)
+})
+
+//PATCH api/v1/house/:id
+router.patch('/:id', (req, res) => {
+  const id = req.params.id
+  const editedRoom = req.body
+  db.patchRoom(id, editedRoom)
+    .then(() => {
+      console.log('patch and edit room')
+      console.log(id)
+      console.log(editedRoom)
+      return db.getRoom(id)
+    })
+    .then((updatedRoom) => {
+      res.json(updatedRoom)
     })
     .catch(console.error)
 })

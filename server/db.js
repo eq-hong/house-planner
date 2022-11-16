@@ -5,6 +5,7 @@ module.exports = {
   getRoom,
   getAllRooms,
   addRoom,
+  patchRoom,
   deleteRoom,
 }
 
@@ -44,6 +45,10 @@ function getRoom(id, db = connection) {
 
 function addRoom(room, db = connection) {
   return db('rooms').insert(room)
+}
+
+function patchRoom(id, editedRoom, db = connection) {
+  return db('rooms').where('id', id).update(editedRoom)
 }
 
 function deleteRoom(id, db = connection) {

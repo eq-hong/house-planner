@@ -37,7 +37,7 @@ function House(){
     <section style={style} className="container">
     <h4>House brainstorm</h4>
       {rooms && rooms?.map((oneRoom, i) => {
-        console.log(Boolean(oneRoom.east))
+        // console.log(Boolean(oneRoom.east))
         const northWindow = Boolean(oneRoom.north)
         const eastWindow = Boolean(oneRoom.east)
         const westWindow = Boolean(oneRoom.west)
