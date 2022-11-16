@@ -67,9 +67,9 @@ router.patch('/:id', (req, res) => {
   const editedRoom = req.body
   db.patchRoom(id, editedRoom)
     .then(() => {
-      console.log('patch and edit room')
-      console.log(id)
-      console.log(editedRoom)
+      // console.log('patch and edit room')
+      // console.log(id)
+      // console.log(editedRoom)
       return db.getRoom(id)
     })
     .then((updatedRoom) => {

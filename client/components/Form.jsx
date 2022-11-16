@@ -9,9 +9,9 @@ import { addRoom } from '../apiClient'
 function Form() {
   const navigate = useNavigate()
   const [newRoom, setNewRoom] = useState({
-    roomName: '',
-    roomType: '',
-    roomNotes: '',
+    room_name: '',
+    room_type: '',
+    room_notes: '',
     priority: '',
     width: '',
     length: '',
@@ -25,6 +25,7 @@ function Form() {
     marginTop: `2.5%`,
     marginLeft: `2.5%`,
   }
+
 
   function handleChange(event) {
     setNewRoom({ ...newRoom,  [event.target.name]: event.target.value })
@@ -50,9 +51,9 @@ function Form() {
     <section className='' style={style}>
       <h4>Room Form</h4>
     <form>
-      Room Name <br></br> <input name="roomName" onChange={handleChange} value={newRoom.roomName} placeholder="eg. main bedroom" /><br></br>
+      Room Name <br></br> <input name="room_name" onChange={handleChange} value={newRoom.room_name} placeholder="eg. main bedroom" /><br></br>
       
-      Room Type <br></br> <select id="roomType" name="roomType" onChange={handleChange} value={newRoom.roomType}>
+      Room Type <br></br> <select id="room_type" name="room_type" onChange={handleChange} value={newRoom.room_type}>
         <option value="" disabled>Select type</option>
         <option value="Bedroom">Bedroom</option>
         <option value="Bathroom">Bathroom</option>
@@ -60,7 +61,7 @@ function Form() {
         <option value="Kitchen">Kitchen</option>
         <option value="Other">Other</option></select>  <br></br>
       
-      Room Notes <br></br> <textarea name="roomNotes" onChange={handleChange} value={newRoom.roomNotes} placeholder="eg. large main bedroom with ensuite"/> <br></br>
+      Room Notes <br></br> <textarea name="room_notes" onChange={handleChange} value={newRoom.room_notes} placeholder="eg. large main bedroom with ensuite"/> <br></br>
       
       Priority  <br></br> <select id="priority" name="priority" onChange={handleChange} value={newRoom.priority}>
         <option value="" disabled>Select priority</option>
