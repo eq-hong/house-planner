@@ -23,23 +23,23 @@ export function getPokemonSearch(searchTerm) {
 
 export function getAllRooms() {
   return request
-    .get(`${serverPrefix}/api/v1/home/all`)
+    .get(`${serverPrefix}/api/v1/house/all`)
     .then((res) => {
       res.body.forEach((room) => validateNoSnakeCase(room))
       return res.body
     })
-    .catch(errorHandler('GET', 'api/v1/home/all'))
+    .catch(errorHandler('GET', 'api/v1/house/all'))
 }
 
 export function getRoom(id) {
   console.log(id);
   return request
-    .get(`${serverPrefix}/api/v1/home/${id}`)
+    .get(`${serverPrefix}/api/v1/house/${id}`)
     .then((res) => {
       console.log(res.body)
       return res.body
     })
-    .catch(errorHandler('GET', 'api/v1/home/:id'))
+    .catch(errorHandler('GET', 'api/v1/house/:id'))
 }
 
 function errorHandler(method, route) {

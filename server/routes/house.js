@@ -17,9 +17,9 @@ const db = require('../db')
 // })
 
 
-//GET api/v1/home/all
+//GET api/v1/house/all
 router.get('/all', (req, res) => {
-  console.log('hit1');
+  // console.log('hit1');
   db.getAllRooms()
     .then((rooms) => {
       res.json(rooms)
@@ -30,9 +30,9 @@ router.get('/all', (req, res) => {
     })
 })
 
-//GET api/v1/home/:id
+//GET api/v1/house/:id
 router.get('/:id', (req, res) => {
-  console.log('hit2');
+  // console.log('hit2');
   db.getRoom(req.params.id)
     .then((room) => {
       res.json(room)
@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-//POST api/v1/home
+//POST api/v1/house
 router.post('/', (req, res) => {
   const post = req.body
   const object = {
@@ -61,7 +61,7 @@ router.post('/', (req, res) => {
     .catch(console.error)
 })
 
-//DELETE api/v1/home
+//DELETE api/v1/house
 router.delete('/:id', (req, res) => {
   const id = Number(req.params.id)
   db.deleteRoom(id)

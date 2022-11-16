@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import request from 'superagent'
 
 import Spinner from './Spinner'
@@ -8,6 +8,7 @@ import { getAllRooms } from '../apiClient'
 
 function House(){
   const [rooms, setRooms] = useState(null)
+  const navigate = useNavigate()
 
   const style = {
     marginTop: `2.5%`,
@@ -30,14 +31,6 @@ function House(){
   
   console.log(rooms);
 
-  // function removeRoom() {
-  //   deleteRoom(Number(id))
-  //     .then(() => {
-  //       fetchPosts()
-  //       navigate('/')
-  //     })
-  //     .catch((err) => console.log(err))
-  // }
 
   return (
     <>
@@ -56,7 +49,7 @@ function House(){
             <div className="row">
             <div className="six columns">
             <Link to={`/house/room/${oneRoom.id}`} >
-              <button>{oneRoom.roomName}</button>
+              <button className="button button-primary">{oneRoom.roomName}</button>
             </Link>
             </div>
             <br></br>

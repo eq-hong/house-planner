@@ -5,14 +5,14 @@ const request = require('superagent')
 
 const server = express()
 
-const home = require('./routes/home')
+const house = require('./routes/house')
 
 server.use(express.json())
 server.use(express.static(path.join(__dirname, './public')))
 server.use(cors('*'))
 
-// Route for home...
-server.use('/api/v1/home', home)
+// Route for house...
+server.use('/api/v1/house', house)
 
 
 server.get('/greeting', (req, res) => {
@@ -34,7 +34,7 @@ server.get('/api/v1/affirmation', (req, res) => {
   })
 })
 
-// server.use('/api/v1/*', (req, res) => res.sendStatus(404))
+server.use('/api/v1/*', (req, res) => res.sendStatus(404))
 
 server.get('*', (req, res) => {
   res.sendFile(path.resolve('server/public/index.html'))

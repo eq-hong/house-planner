@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate  } from 'react-router-dom'
 import request from 'superagent'
 
 import Spinner from './Spinner'
@@ -7,6 +7,7 @@ import Spinner from './Spinner'
 import { getRoom } from '../apiClient'
 
 function Room() {
+  const navigate = useNavigate()
   const [room, setRoom] = useState('')
   const { id } = useParams()
   // console.log(id);
@@ -28,6 +29,14 @@ function Room() {
   }, [])
 
   // console.log(room);
+
+  function removeRoom() {
+    deleteRoom(Number(id))
+      .then(() => {
+        navigate('/')
+      })
+      .catch((err) => console.log(err))
+  }
 
   function handleChange(event) {
     setRoom(event.target.value)
