@@ -54,6 +54,7 @@ function Form() {
       Room Name <br></br> <input name="roomName" onChange={handleChange} value={newRoom.roomName} placeholder="eg. main bedroom" /><br></br>
       
       Room Type <br></br> <select id="roomType" name="roomType" onChange={handleChange} value={newRoom.roomType}>
+        <option value="" disabled selected>Select type</option>
         <option value="Bedroom">Bedroom</option>
         <option value="Bathroom">Bathroom</option>
         <option value="Living">Living</option>
@@ -63,6 +64,7 @@ function Form() {
       Room Notes <br></br> <textarea name="roomNotes" onChange={handleChange} value={newRoom.roomNotes} placeholder="eg. large main bedroom with ensuite"/> <br></br>
       
       Priority  <br></br> <select id="priority" name="priority" onChange={handleChange} value={newRoom.priority}>
+        <option value="" disabled selected>Select priority</option>
         <option value="High">High</option>
         <option value="Mid">Mid</option>
         <option value="Low">Low</option></select>  <br></br>
@@ -71,6 +73,7 @@ function Form() {
       Room Length <br></br> <input name="length" onChange={handleChange} value={newRoom.length} placeholder="eg. 3" /><br></br>
 
       Floor  <br></br> <select id="floor" name="floor" onChange={handleChange} value={newRoom.floor}>
+        <option value="" disabled selected>Select floor</option>
         <option value="Ground / Level 1">Ground / Level 1</option>
         <option value="Level 2">Level 2</option>
         <option value="Level 3">Level 3</option></select>  <br></br>

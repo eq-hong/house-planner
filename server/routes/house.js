@@ -44,7 +44,7 @@ router.get('/:id', (req, res) => {
 })
 
 //POST api/v1/house
-router.post('/', (req, res) => {
+router.post('/all', (req, res) => {
   const post = req.body
   const object = {
     ...post,

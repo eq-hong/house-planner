@@ -45,12 +45,12 @@ export function getRoom(id) {
 export function addRoom(newRoom) {
   console.log(newRoom)
   return request
-    .post(`${serverPrefix}/api/v1/house`)
+    .post(`${serverPrefix}/api/v1/house/all`)
     .send(newRoom)
     .then((res) => {
       console.log(res.body);
       // validateNoSnakeCase(res.body)
-      // validatePostResponse('POST', '/api/v1/house', res.body)
+      // validatePostResponse('POST', '/api/v1/house/all', res.body)
       return res.body
     })
     .catch(errorHandler('POST', '/api/v1/house'))
