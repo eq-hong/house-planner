@@ -42,6 +42,13 @@ export function getRoom(id) {
     .catch(errorHandler('GET', 'api/v1/house/:id'))
 }
 
+export function deleteRoom(id) {
+  return request
+    .del(`${serverPrefix}/api/v1/house/${id}`)
+    .then((res) => res)
+    .catch(errorHandler('DELETE', 'api/v1/house/:id'))
+}
+
 function errorHandler(method, route) {
   return (err) => {
     if (err.message === 'Not Found') {
