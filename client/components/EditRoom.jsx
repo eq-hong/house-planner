@@ -9,7 +9,18 @@ import { getRoom, deleteRoom, updateRoom } from '../apiClient'
 function Room() {
   const navigate = useNavigate()
   const { id } = useParams()
-  const [room, setRoom] = useState({})
+  const [room, setRoom] = useState({
+    room_name: '',
+    room_type: '',
+    room_notes: '',
+    priority: '',
+    width: '',
+    length: '',
+    north: '',
+    east: '',
+    south: '',
+    floor: '',
+  })
 
   // console.log(id);
 
@@ -71,7 +82,7 @@ function Room() {
   }
 
   function handleChange(event) {
-    setRoom({ [event.target.name]: event.target.value })
+    setRoom({ ...room, [event.target.name]: event.target.value })
   }
 
   console.log(room);
@@ -83,9 +94,9 @@ function Room() {
     <section style={style}>
       <h4>Room Form</h4>
       <form>
-        Room Name <br></br> <input name="room_name" onChange={handleChange} value={room.room_name} placeholder="eg. main bedroom" /><br></br>
+        Room Name <br></br> <input name="roomName" onChange={handleChange} value={room.roomName} placeholder="eg. main bedroom" /><br></br>
         
-        Room Type <br></br> <select id="room_type" name="room_type" onChange={handleChange} value={room.room_type}>
+        Room Type <br></br> <select id="roomType" name="roomType" onChange={handleChange} value={room.roomType}>
           <option value="" disabled>Select type</option>
           <option value="Bedroom">Bedroom</option>
           <option value="Bathroom">Bathroom</option>
@@ -93,7 +104,7 @@ function Room() {
           <option value="Kitchen">Kitchen</option>
           <option value="Other">Other</option></select>  <br></br>
         
-        Room Notes <br></br> <textarea name="room_notes" onChange={handleChange} value={room.room_notes} placeholder="eg. large main bedroom with ensuite"/> <br></br>
+        Room Notes <br></br> <textarea name="roomNotes" onChange={handleChange} value={room.roomNotes} placeholder="eg. large main bedroom with ensuite"/> <br></br>
         
         Priority  <br></br> <select id="priority" name="priority" onChange={handleChange} value={room.priority}>
           <option value="" disabled>Select priority</option>
