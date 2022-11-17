@@ -9,6 +9,7 @@ import { getRoom, deleteRoom, updateRoom } from '../apiClient'
 function Room() {
   const navigate = useNavigate()
   const { id } = useParams()
+
   const [room, setRoom] = useState({
     room_name: '',
     room_type: '',
@@ -63,6 +64,11 @@ function Room() {
 
   // console.log(room);
 
+  const [isCheckedNorth, setIsCheckedNorth] = useState(northWindow)
+  const [isCheckedEast, setIsCheckedEast] = useState(eastWindow)
+  const [isCheckedWest, setIsCheckedWest] = useState(westWindow)
+  const [isCheckedSouth, setIsCheckedSouth] = useState(southWindow)
+
   function removeRoom(evt) {
     evt.preventDefault()
     deleteRoom(Number(id))
@@ -83,6 +89,24 @@ function Room() {
 
   function handleChange(event) {
     setRoom({ ...room, [event.target.name]: event.target.value })
+  }
+
+  function handleCheckNorth() {
+    setIsCheckedNorth(!isCheckedNorth)
+    console.log('testing', isCheckedNorth)
+    return ( isCheckedNorth ?  room.north=false : room.north=true )
+  }
+  function handleCheckEast() {
+    setIsCheckedEast(!isCheckedEast)
+    return ( isCheckedEast ?  room.east=false : room.east=true )
+  }
+  function handleCheckWest() {
+    setIsCheckedWest(!isCheckedWest)
+    return ( isCheckedWest ?  room.west=false : room.west=true )
+  }
+  function handleCheckSouth() {
+    setIsCheckedSouth(!isCheckedSouth)
+    return ( isCheckedSouth ?  room.south=false : room.south=true )
   }
 
   console.log(room);
@@ -121,17 +145,17 @@ function Room() {
           <option value="Level 2">Level 2</option>
           <option value="Level 3">Level 3</option></select>  <br></br>
       
-        <input type="checkbox" id="north" name="north" onChange={handleChange} checked={room.north}/> North-facing (Daytime sun)  <br></br>
-        <input type="checkbox" id="east" name="east" onChange={handleChange} checked={room.east}/> East-facing (Morning sun)  <br></br>
-        <input type="checkbox" id="west" name="west" onChange={handleChange} checked={room.west}/> West-facing (Afternoon sun)  <br></br>
-        <input type="checkbox" id="south" name="south" onChange={handleChange} checked={room.south}/> South-facing (Indirect sun)  <br></br>
+        <input type="checkbox" id="north" name="north" onChange={handleCheckNorth} checked={northWindow} value={isCheckedNorth}/> North-facing (Daytime sun)  <br></br>
+        <input type="checkbox" id="east" name="east" onChange={handleCheckEast} checked={eastWindow} value={isCheckedEast}/> East-facing (Morning sun)  <br></br>
+        <input type="checkbox" id="west" name="west" onChange={handleCheckWest} checked={westWindow} value={isCheckedWest}/> West-facing (Afternoon sun)  <br></br>
+        <input type="checkbox" id="south" name="south" onChange={handleCheckSouth} checked={southWindow} value={isCheckedSouth}/> South-facing (Indirect sun)  <br></br>
 
-        <br></br><button onClick={editRoom}>Update</button>&nbsp;<button>Preview</button>&nbsp;<button onClick={removeRoom}>Delete</button>
+        <br></br><button onClick={editRoom}>Update</button>&nbsp;<button onClick={removeRoom}>Delete</button>
       </form>
 
       <div className='add-button'>
         <Link to={`/house`} >
-        <button>Back</button> 
+          <button>Back</button> 
         </Link>
       </div>
       
@@ -140,9 +164,9 @@ function Room() {
       
         <div className='centre-room-diagram' style={roomDiagram}>
           <div className='room-diagram-flex'>
-          <p>{room.room_name}<br></br>{roomArea}sqm</p>
+            <p>{room.roomName}<br></br>{roomArea}sqm</p>
           </div>
-          </div>
+        </div>
        
     </section>
   </>

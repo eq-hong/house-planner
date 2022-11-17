@@ -323,8 +323,8 @@ input[type="reset"].button-primary,
   border-color: #33C3F0; } */
   input[type="button"].button-primary {
     color: #FFF;
-    background-color: #808080;
-    border-color: #808080; }
+    background-color: #909090;
+    border-color: #909090; }
 .button.button-primary:hover,
 button.button-primary:hover,
 input[type="submit"].button-primary:hover,
@@ -340,8 +340,8 @@ input[type="reset"].button-primary:focus,
   border-color: #1EAEDB; } */
   input[type="button"].button-primary:focus {
     color: #FFF;
-    background-color: #909090;
-    border-color: #909090; }
+    background-color: #bebebe;
+    border-color: #bebebe; }
 
 
 /* Forms
