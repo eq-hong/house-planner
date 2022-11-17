@@ -44,11 +44,19 @@ function Room() {
   
   const roomDiagram = {
     border: `#797979`,
-    borderWidth: `4.5px`,
+    borderWidth: roomBorder(),
     borderStyle: `${northWindowDiagram} ${eastWindowDiagram} ${southWindowDiagram} ${westWindowDiagram}`,
     width: `${roomWidthPx}px`,
     height: `${roomLengthPx}px`,
     textAlign: `center`,
+  }
+
+  function roomBorder (){
+    if (room.width == 0 || room.length == 0){
+      return `0`
+    } else {
+      `4.5px`
+    }
   }
 
   useEffect(() => {
@@ -164,7 +172,7 @@ function Room() {
       
         <div className='centre-room-diagram' style={roomDiagram}>
           <div className='room-diagram-flex'>
-            <p>{room.roomName}<br></br>{roomArea}sqm</p>
+            <p className='p-overflow'>{room.roomName}<br></br>{roomArea}sqm</p>
           </div>
         </div>
        

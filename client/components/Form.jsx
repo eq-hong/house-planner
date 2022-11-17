@@ -26,9 +26,61 @@ function Form() {
     marginLeft: `2.5%`,
   }
 
+  const northWindow = Boolean(newRoom.north)
+  const eastWindow = Boolean(newRoom.east)
+  const westWindow = Boolean(newRoom.west)
+  const southWindow = Boolean(newRoom.south)
+  const roomArea = (newRoom.width)*(newRoom.length)
+  const roomWidthPx = (newRoom.width)*50
+  const roomLengthPx = (newRoom.length)*50
+  const northWindowDiagram = ( northWindow ? 'dashed' : 'solid')
+  const eastWindowDiagram = ( eastWindow ? 'dashed' : 'solid')
+  const westWindowDiagram = ( westWindow ? 'dashed' : 'solid')
+  const southWindowDiagram = ( southWindow ? 'dashed' : 'solid')
+
+  function roomBorder (){
+    if (newRoom.width == 0 || newRoom.length == 0){
+      return `0`
+    } else {
+      `4.5px`
+    }
+  }
+  
+  const roomDiagram = {
+    border: `#797979`,
+    borderWidth: roomBorder(),
+    borderStyle: `${northWindowDiagram} ${eastWindowDiagram} ${southWindowDiagram} ${westWindowDiagram}`,
+    width: `${roomWidthPx}px`,
+    height: `${roomLengthPx}px`,
+    textAlign: `center`,
+  }
+
+  const [isCheckedNorth, setIsCheckedNorth] = useState(northWindow)
+  const [isCheckedEast, setIsCheckedEast] = useState(eastWindow)
+  const [isCheckedWest, setIsCheckedWest] = useState(westWindow)
+  const [isCheckedSouth, setIsCheckedSouth] = useState(southWindow)
+
 
   function handleChange(event) {
     setNewRoom({ ...newRoom,  [event.target.name]: event.target.value })
+  }
+
+  function handleCheckNorth() {
+    setIsCheckedNorth(!isCheckedNorth)
+    console.log('testing', isCheckedNorth)
+    return ( isCheckedNorth ?  newRoom.north=false : newRoom.north=true )
+  }
+  function handleCheckEast() {
+    setIsCheckedEast(!isCheckedEast)
+    return ( isCheckedEast ?  newRoom.east=false : newRoom.east=true )
+  }
+  function handleCheckWest() {
+    setIsCheckedWest(!isCheckedWest)
+    return ( isCheckedWest ?  newRoom.west=false : newRoom.west=true )
+  }
+  function handleCheckSouth() {
+    setIsCheckedSouth(!isCheckedSouth)
+    return ( isCheckedSouth ?  newRoom.south=false : newRoom.south=true )
   }
 
   function addNewRoom(evt){
@@ -78,12 +130,12 @@ function Form() {
         <option value="Level 2">Level 2</option>
         <option value="Level 3">Level 3</option></select>  <br></br>
     
-      <input type="checkbox" id="north" name="north" onChange={handleChange} checked={newRoom.north}/> North-facing (Daytime sun)  <br></br>
-      <input type="checkbox" id="east" name="east" onChange={handleChange} checked={newRoom.east}/> East-facing (Morning sun)  <br></br>
-      <input type="checkbox" id="west" name="west" onChange={handleChange} checked={newRoom.west}/> West-facing (Afternoon sun)  <br></br>
-      <input type="checkbox" id="south" name="south" onChange={handleChange} checked={newRoom.south}/> South-facing (Indirect sun)  <br></br>
+        <input type="checkbox" id="north" name="north" onChange={handleCheckNorth} checked={northWindow} value={isCheckedNorth}/> North-facing (Daytime sun)  <br></br>
+        <input type="checkbox" id="east" name="east" onChange={handleCheckEast} checked={eastWindow} value={isCheckedEast}/> East-facing (Morning sun)  <br></br>
+        <input type="checkbox" id="west" name="west" onChange={handleCheckWest} checked={westWindow} value={isCheckedWest}/> West-facing (Afternoon sun)  <br></br>
+        <input type="checkbox" id="south" name="south" onChange={handleCheckSouth} checked={southWindow} value={isCheckedSouth}/> South-facing (Indirect sun)  <br></br>
 
-      <br></br><button onClick={addNewRoom}>Add</button>&nbsp;<button>Preview</button>
+      <br></br><button onClick={addNewRoom}>Add</button>
     </form>
     <div className='add-button'>
      <Link to={`/house`} >
@@ -91,6 +143,15 @@ function Form() {
      </Link>
      </div>
     </section>
+    <section>
+      
+      <div className='centre-room-diagram' style={roomDiagram}>
+        <div className='room-diagram-flex'>
+          <p>{newRoom.room_name}<br></br>{roomArea}sqm</p>
+        </div>
+      </div>
+     
+  </section>
   </>
   )
 }
