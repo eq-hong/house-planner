@@ -101,7 +101,7 @@ function Room() {
 
   function handleCheckNorth() {
     setIsCheckedNorth(!isCheckedNorth)
-    console.log('testing', isCheckedNorth)
+    console.log('North checkbox', isCheckedNorth)
     return ( isCheckedNorth ?  room.north=false : room.north=true )
   }
   function handleCheckEast() {
@@ -117,8 +117,7 @@ function Room() {
     return ( isCheckedSouth ?  room.south=false : room.south=true )
   }
 
-  console.log(room);
-  console.log('console.log room')
+  console.log('room', room);
 
 
   return (

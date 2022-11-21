@@ -67,7 +67,7 @@ function Form() {
 
   function handleCheckNorth() {
     setIsCheckedNorth(!isCheckedNorth)
-    console.log('testing', isCheckedNorth)
+    console.log('North checkbox', isCheckedNorth)
     return ( isCheckedNorth ?  newRoom.north=false : newRoom.north=true )
   }
   function handleCheckEast() {
@@ -85,9 +85,7 @@ function Form() {
 
   function addNewRoom(evt){
     evt.preventDefault()
-    console.log('console.log addNewRoom')
-    console.log(newRoom);
-    console.log('console.log addNewRoom')
+    console.log('addNewRoom', newRoom);
     return addRoom(newRoom)
     .then(() => {
       navigate('/house')
@@ -95,8 +93,7 @@ function Form() {
     .catch((err) => console.log(err))
   }
   
-  console.log(newRoom);
-  console.log('console.log newRoom')
+  console.log('newRoom', newRoom);
 
   return (
     <>
