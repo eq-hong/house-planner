@@ -6,7 +6,7 @@ import Greeting from './Greeting'
 import Pokemon from './Pokemon'
 import Blathers from './Blathers'
 import Homepage from './Homepage'
-import Form from './Form'
+import AddRoom from './AddRoom'
 import House from './House'
 import EditRoom from './EditRoom'
 
@@ -17,7 +17,7 @@ const App = () => {
       <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/house" element={<House />} />
-      <Route path="/house/form" element={<Form />} />
+      <Route path="/house/add" element={<AddRoom />} />
       <Route path="/house/room/:id" element={<EditRoom />} />
       <Route path="/blathers" element={<Blathers/>} />
       <Route path="/pokemon" element={<Pokemon />} />

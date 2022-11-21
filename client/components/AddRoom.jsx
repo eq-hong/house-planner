@@ -6,7 +6,7 @@ import Spinner from './Spinner'
 
 import { addRoom } from '../apiClient'
 
-function Form() {
+function AddRoom() {
   const navigate = useNavigate()
   const [newRoom, setNewRoom] = useState({
     room_name: '',
@@ -154,4 +154,4 @@ function Form() {
 }
 
 
-export default Form
+export default AddRoom
