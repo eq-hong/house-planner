@@ -91,6 +91,10 @@ function House(){
      <button >Add a Room</button>
      </Link>
      &nbsp;
+     <Link to={`/house/calc`} >
+     <button>Calculate</button>
+     </Link>
+     &nbsp;
      <Link to={`/`} >
      <button>Homepage</button>
      </Link>

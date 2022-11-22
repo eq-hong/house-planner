@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { fetchRooms } from '../actions'
+
 import Affirmation from './Affirmation'
 import Greeting from './Greeting'
 import Pokemon from './Pokemon'
@@ -15,6 +17,9 @@ import Calculation from './Calculation'
 const App = () => {
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(fetchRooms())
+  }, [])
 
   return (
     <>

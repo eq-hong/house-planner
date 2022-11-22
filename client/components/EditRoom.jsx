@@ -5,13 +5,19 @@ import request from 'superagent'
 
 import Spinner from './Spinner'
 
-import { getRoom, deleteRoom, updateRoom } from '../apiClient'
-import { delRoom } from '../actions'
+import { getRoom } from '../apiClient'
+import { fetchRooms, delRoom, changeRoom } from '../actions'
 
 function Room() {
   const navigate = useNavigate()
   const { id } = useParams()
   const dispatch = useDispatch()
+  // const rooms = useSelector((state) => state.rooms)
+  // const roomM = rooms.find((found) => found.id == id)
+
+  
+  // console.log('rooms', rooms)
+  // console.log('roomM', roomM)
 
   const [room, setRoom] = useState({
     room_name: '',
@@ -26,7 +32,7 @@ function Room() {
     floor: '',
   })
 
-  // console.log(id);
+  console.log(id);
 
   const style = {
     marginTop: `2.5%`,
@@ -62,6 +68,10 @@ function Room() {
     }
   }
 
+  // useEffect(() => {
+  //   dispatch(fetchRooms())
+  // }, [])
+  
   useEffect(() => {
     getRoom(id)
       .then((data) => {
@@ -73,7 +83,7 @@ function Room() {
       })
   }, [])
 
-  // console.log(room);
+  console.log(room);
 
   const [isCheckedNorth, setIsCheckedNorth] = useState(northWindow)
   const [isCheckedEast, setIsCheckedEast] = useState(eastWindow)
@@ -92,11 +102,8 @@ function Room() {
 
   function editRoom(evt){
     evt.preventDefault()
-    updateRoom(id, room)
-    .then(() => {
+      dispatch(changeRoom(id, room))
       navigate('/house')
-    })
-    .catch((err) => console.log(err))
   }
 
   function handleChange(event) {

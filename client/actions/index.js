@@ -1,7 +1,8 @@
 export const SET_ROOMS = 'SET_ROOMS'
 export const DEL_ROOM = 'DEL_ROOM'
+export const UPDATE_ROOM = 'UPDATE_ROOM'
 
-import { deleteRoom, getAllRooms } from '../apiClient'
+import { deleteRoom, getAllRooms, updateRoom } from '../apiClient'
 
 export function setRooms(rooms) {
   return {
@@ -24,8 +25,21 @@ export function delRoom(id) {
       dispatch({
           type: DEL_ROOM,
           payload: id,
-        }
-      )
+      })
     })
+  } 
 }
-}
+
+export function changeRoom(id, room) {
+  return (dispatch) => {
+      return updateRoom(id, room).then(() => {
+        dispatch({
+          type: UPDATE_ROOM,
+          payload: { 
+            id: id,
+            updatedRoom: room 
+          }
+        })
+      })
+    }
+  }
