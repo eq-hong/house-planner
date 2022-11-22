@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { setRoomArea } from '../actions'
+import { fetchRooms } from '../actions'
 import { getAllRooms } from '../apiClient'
 
 function Calculation(){
-  const [rooms, setRooms] = useState(null)
-  // const roomsArea = useSelector((state) => state.rooms)
+  // const [rooms, setRooms] = useState(null)
+  const rooms = useSelector((state) => state.rooms)
   const dispatch = useDispatch()
 
   const style = {
@@ -16,13 +16,7 @@ function Calculation(){
   }
 
   useEffect(() => {
-    getAllRooms()
-      .then((room) => {
-        setRooms(room)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    dispatch(fetchRooms())
   }, [])
   
  
@@ -34,10 +28,10 @@ function Calculation(){
     {rooms && rooms?.map((oneRoom, i) => {
       const roomArea = (oneRoom.width)*(oneRoom.length)
       
-      dispatch(setRoomArea(oneRoom.id, roomArea))
-        console.log('oneRoom.id', oneRoom.id,);
-        console.log('roomArea', roomArea)
-        console.log('setRoomArea', setRoomArea())
+      // dispatch(setRoomArea(oneRoom.id, roomArea))
+      //   console.log('oneRoom.id', oneRoom.id,);
+      //   console.log('roomArea', roomArea)
+      //   console.log('setRoomArea', setRoomArea())
 
       return (
         <div key={i}>

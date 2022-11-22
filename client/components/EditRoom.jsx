@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate  } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 import request from 'superagent'
 
 import Spinner from './Spinner'
 
 import { getRoom, deleteRoom, updateRoom } from '../apiClient'
+import { delRoom } from '../actions'
 
 function Room() {
   const navigate = useNavigate()
   const { id } = useParams()
+  const dispatch = useDispatch()
 
   const [room, setRoom] = useState({
     room_name: '',
@@ -79,11 +82,12 @@ function Room() {
 
   function removeRoom(evt) {
     evt.preventDefault()
-    deleteRoom(Number(id))
-      .then(() => {
-        navigate('/house')
-      })
-      .catch((err) => console.log(err))
+
+    //call dispatch with delRoom instead of deleteRoom(Number(id))
+    //won't need the .then and the .catch anymore
+    //after the dispatch, run the navigate
+    dispatch(delRoom(id))
+    navigate('/house')
   }
 
   function editRoom(evt){
