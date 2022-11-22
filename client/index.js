@@ -7,5 +7,5 @@ import store from './store'
 import App from './components/App'
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<Router><App /></Router>, document.getElementById('app'))
+  ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('app'))
 })

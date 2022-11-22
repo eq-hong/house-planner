@@ -59,34 +59,35 @@ function House(){
           height: `${roomLengthPx}px`,
         }
 
-        return (
-          <div key={i}>
-            <div className="row">
-            <div className="six columns">
-            <Link to={`/house/room/${oneRoom.id}`} >
-              <button className="button button-primary">{oneRoom.roomName}</button>
-            </Link>
+          return (
+            <div key={i}>
+              <div className="row">
+              <div className="six columns">
+              <Link to={`/house/room/${oneRoom.id}`} >
+                <button className="button button-primary">{oneRoom.roomName}</button>
+              </Link>
+              </div>
+              <br></br>
+              <div className="ten columns" style={customPadding}>{oneRoom.roomNotes}</div>
+              
+              </div>
+              <div className="row">
+              <div className="two columns"></div>
+              <div className="two columns"><b>Room Type</b><br></br> {oneRoom.roomType}</div>
+              <div className="two columns"><b>Priority</b> <br></br>{oneRoom.priority}</div>
+              <div className="two columns"><b>Size</b> <br></br>{oneRoom.width}m x {oneRoom.length}m <br></br> {roomArea}sqm</div>
+              <div className="two columns"><b>Floor</b> <br></br>{oneRoom.floor}</div>
+              <div className="three columns"><b>Facing</b> <br></br>{ northWindow ? `North` : null } { southWindow ? 'South' : null } { eastWindow ? 'East' : null } { westWindow ? 'West' : null } </div>
+              </div>
+              <div style={roomDiagram}></div>
+              <br></br>
+              <hr className='remove-margin'></hr>
             </div>
-            <br></br>
-            <div className="ten columns" style={customPadding}>{oneRoom.roomNotes}</div>
-            
-            </div>
-            <div className="row">
-            <div className="two columns"></div>
-            <div className="two columns"><b>Room Type</b><br></br> {oneRoom.roomType}</div>
-            <div className="two columns"><b>Priority</b> <br></br>{oneRoom.priority}</div>
-            <div className="two columns"><b>Size</b> <br></br>{oneRoom.width}m x {oneRoom.length}m <br></br> {roomArea}sqm</div>
-            <div className="two columns"><b>Floor</b> <br></br>{oneRoom.floor}</div>
-            <div className="three columns"><b>Facing</b> <br></br>{ northWindow ? `North` : null } { southWindow ? 'South' : null } { eastWindow ? 'East' : null } { westWindow ? 'West' : null } </div>
-            </div>
-            <div style={roomDiagram}></div>
-            <br></br>
-            <hr className='remove-margin'></hr>
-          </div>
-        )}
-      )}
+          )
+        })
+      }
       <div className='add-button'>
-     <Link to={`/house/form`} >
+     <Link to={`/house/add`} >
      <button >Add a Room</button>
      </Link>
      &nbsp;

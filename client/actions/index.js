@@ -1,8 +1,8 @@
-// export const
+export const SET_ROOM_AREA = 'SET_ROOM_AREA'
 
-export function setRoomArea() {
+export function setRoomArea(id, area) {
   return {
-    type:
-    payload:
+    type: SET_ROOM_AREA,
+    payload: { id , area },
   }
 }
