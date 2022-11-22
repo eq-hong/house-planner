@@ -20,21 +20,30 @@ function Calculation(){
     <h4>Calculation</h4>
 
     <h5>Total area</h5>
-    {rooms && rooms?.map((oneRoom, i) => {
-      const roomArea = (oneRoom.width)*(oneRoom.length)
-      
-      // dispatch(setRoomArea(oneRoom.id, roomArea))
-      //   console.log('oneRoom.id', oneRoom.id,);
-      //   console.log('roomArea', roomArea)
-      //   console.log('setRoomArea', setRoomArea())
+      {rooms && rooms?.map((oneRoom, i) => {
+        const roomArea = (oneRoom.width)*(oneRoom.length)
+        
+        // dispatch(setRoomArea(oneRoom.id, roomArea))
+        //   console.log('oneRoom.id', oneRoom.id,);
+        //   console.log('roomArea', roomArea)
+        //   console.log('setRoomArea', setRoomArea())
 
-      return (
-        <div key={i}>
-           {roomArea}sqm ({oneRoom.roomName})
-        </div>
-      )
-      })
-    }
+        return (
+          <div key={i}>
+            {roomArea}sqm ({oneRoom.roomName})
+          </div>
+        )
+        })
+      }
+    <div className='add-button'>
+     <Link to={`/house`} >
+     <button >Back</button>
+     </Link>
+     &nbsp;
+     <Link to={`/`} >
+     <button>Homepage</button>
+     </Link>
+     </div>
     </section>
   )
 }
