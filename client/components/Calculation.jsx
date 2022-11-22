@@ -14,11 +14,6 @@ function Calculation(){
     marginTop: `2.5%`,
     marginLeft: `2.5%`,
   }
-
-  useEffect(() => {
-    dispatch(fetchRooms())
-  }, [])
-  
  
   return(
     <section style={style} className="container">
