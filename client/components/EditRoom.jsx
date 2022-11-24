@@ -12,12 +12,11 @@ function Room() {
   const navigate = useNavigate()
   const { id } = useParams()
   const dispatch = useDispatch()
-  // const rooms = useSelector((state) => state.rooms)
-  // const roomM = rooms.find((found) => found.id == id)
+  const rooms = useSelector((state) => state.rooms)
+  const selectedRoom = rooms.find((found) => found.id == id)
 
-  
   // console.log('rooms', rooms)
-  // console.log('roomM', roomM)
+  // console.log('selectedRoom', selectedRoom)
 
   const [room, setRoom] = useState({
     room_name: '',
@@ -28,11 +27,46 @@ function Room() {
     length: '',
     north: '',
     east: '',
+    west: '',
     south: '',
     floor: '',
   })
 
-  console.log(id);
+  useEffect(() => {
+    setRoom({
+      room_name: selectedRoom?.roomName || '',
+      room_type: selectedRoom?.roomType || '',
+      room_notes: selectedRoom?.roomNotes || '',
+      priority: selectedRoom?.priority || '',
+      width: selectedRoom?.width || '',
+      length: selectedRoom?.length || '',
+      north: selectedRoom?.north || '',
+      east: selectedRoom?.east || '',
+      west: selectedRoom?.west || '',
+      south: selectedRoom?.south || '',
+      floor: selectedRoom?.floor || '',
+    })
+    console.log('selectedRoom.roomName', selectedRoom?.roomName);
+  }, [rooms])
+
+  function handleChange(event) {
+    setRoom({ ...room, [event.target.name]: event.target.value })
+  }
+
+// useEffect(() => {
+//   getRoom(id)
+//     .then((data) => {
+//       setRoom(data)
+//       // console.log(data);
+//     })
+//     .catch((err) => {
+//       console.log(err)
+//     })
+// }, [])
+
+  // console.log('id', id);
+  console.log('room', room);
+
 
   const style = {
     marginTop: `2.5%`,
@@ -68,31 +102,9 @@ function Room() {
     }
   }
 
-  // useEffect(() => {
-  //   dispatch(fetchRooms())
-  // }, [])
-  
-  useEffect(() => {
-    getRoom(id)
-      .then((data) => {
-        setRoom(data)
-        // console.log(data);
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
-
-  console.log(room);
-
-  const [isCheckedNorth, setIsCheckedNorth] = useState(northWindow)
-  const [isCheckedEast, setIsCheckedEast] = useState(eastWindow)
-  const [isCheckedWest, setIsCheckedWest] = useState(westWindow)
-  const [isCheckedSouth, setIsCheckedSouth] = useState(southWindow)
 
   function removeRoom(evt) {
     evt.preventDefault()
-
     //call dispatch with delRoom instead of deleteRoom(Number(id))
     //won't need the .then and the .catch anymore
     //after the dispatch, run the navigate
@@ -106,9 +118,10 @@ function Room() {
       navigate('/house')
   }
 
-  function handleChange(event) {
-    setRoom({ ...room, [event.target.name]: event.target.value })
-  }
+  const [isCheckedNorth, setIsCheckedNorth] = useState(northWindow)
+  const [isCheckedEast, setIsCheckedEast] = useState(eastWindow)
+  const [isCheckedWest, setIsCheckedWest] = useState(westWindow)
+  const [isCheckedSouth, setIsCheckedSouth] = useState(southWindow)
 
   function handleCheckNorth() {
     setIsCheckedNorth(!isCheckedNorth)
@@ -127,8 +140,6 @@ function Room() {
     setIsCheckedSouth(!isCheckedSouth)
     return ( isCheckedSouth ?  room.south=false : room.south=true )
   }
-
-  console.log('room', room);
 
 
   return (
@@ -190,6 +201,5 @@ function Room() {
   </>
   )
 }
-
 
 export default Room
