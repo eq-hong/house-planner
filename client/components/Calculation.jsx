@@ -22,12 +22,6 @@ function Calculation(){
     <h5>Total area</h5>
       {rooms && rooms?.map((oneRoom, i) => {
         const roomArea = (oneRoom.width)*(oneRoom.length)
-        
-        // dispatch(setRoomArea(oneRoom.id, roomArea))
-        //   console.log('oneRoom.id', oneRoom.id,);
-        //   console.log('roomArea', roomArea)
-        //   console.log('setRoomArea', setRoomArea())
-
         return (
           <div key={i}>
             {roomArea}sqm ({oneRoom.roomName})
@@ -49,3 +43,9 @@ function Calculation(){
 }
 
 export default Calculation
+
+        
+        // dispatch(setRoomArea(oneRoom.id, roomArea))
+        //   console.log('oneRoom.id', oneRoom.id,);
+        //   console.log('roomArea', roomArea)
+        //   console.log('setRoomArea', setRoomArea())

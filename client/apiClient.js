@@ -106,6 +106,13 @@ function validatePostResponse(method, route, post) {
   }
 }
 
-
-
 // from charlottes-web-log-api END //
+
+// export function postArea(newArea) {
+//   return request
+//     .post(`${serverPrefix}/api/v1/house/all`)
+//     .send(newArea)
+//     .then((res) => {
+//       return res.body
+//     })
+// }

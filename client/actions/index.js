@@ -30,7 +30,7 @@ export function delRoom(id) {
   } 
 }
 
-export function changeRoom(id, room) {
+export function editRoom(id, room) {
   return (dispatch) => {
       return updateRoom(id, room).then(() => {
         dispatch({

@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate  } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import request from 'superagent'
-
-import Spinner from './Spinner'
 
 import { getRoom } from '../apiClient'
-import { fetchRooms, delRoom, changeRoom } from '../actions'
+import { fetchRooms, delRoom, editRoom } from '../actions'
 
 function Room() {
   const navigate = useNavigate()
@@ -47,7 +44,7 @@ function Room() {
       floor: selectedRoom?.floor || '',
     })
     console.log('selectedRoom.roomName', selectedRoom?.roomName);
-  }, [rooms])
+  }, [])
 
   function handleChange(event) {
     setRoom({ ...room, [event.target.name]: event.target.value })
@@ -112,9 +109,9 @@ function Room() {
     navigate('/house')
   }
 
-  function editRoom(evt){
+  function updateRoom(evt){
     evt.preventDefault()
-      dispatch(changeRoom(id, room))
+      dispatch(editRoom(id, room))
       navigate('/house')
   }
 
@@ -147,9 +144,9 @@ function Room() {
     <section style={style}>
       <h4>Room Form</h4>
       <form>
-        Room Name <br></br> <input name="roomName" onChange={handleChange} value={room.roomName} placeholder="eg. main bedroom" /><br></br>
+        Room Name <br></br> <input name="room_name" onChange={handleChange} value={room.room_name} placeholder="eg. main bedroom" /><br></br>
         
-        Room Type <br></br> <select id="roomType" name="roomType" onChange={handleChange} value={room.roomType}>
+        Room Type <br></br> <select id="room_type" name="room_type" onChange={handleChange} value={room.room_type}>
           <option value="" disabled>Select type</option>
           <option value="Bedroom">Bedroom</option>
           <option value="Bathroom">Bathroom</option>
@@ -157,7 +154,7 @@ function Room() {
           <option value="Kitchen">Kitchen</option>
           <option value="Other">Other</option></select>  <br></br>
         
-        Room Notes <br></br> <textarea name="roomNotes" onChange={handleChange} value={room.roomNotes} placeholder="eg. large main bedroom with ensuite"/> <br></br>
+        Room Notes <br></br> <textarea name="room_notes" onChange={handleChange} value={room.room_notes} placeholder="eg. large main bedroom with ensuite"/> <br></br>
         
         Priority  <br></br> <select id="priority" name="priority" onChange={handleChange} value={room.priority}>
           <option value="" disabled>Select priority</option>
@@ -179,7 +176,7 @@ function Room() {
         <input type="checkbox" id="west" name="west" onChange={handleCheckWest} checked={westWindow} value={isCheckedWest}/> West-facing (Afternoon sun)  <br></br>
         <input type="checkbox" id="south" name="south" onChange={handleCheckSouth} checked={southWindow} value={isCheckedSouth}/> South-facing (Indirect sun)  <br></br>
 
-        <br></br><button onClick={editRoom}>Update</button>&nbsp;<button onClick={removeRoom}>Delete</button>
+        <br></br><button onClick={updateRoom}>Update</button>&nbsp;<button onClick={removeRoom}>Delete</button>
       </form>
 
       <div className='add-button'>
