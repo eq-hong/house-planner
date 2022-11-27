@@ -14,6 +14,7 @@ export function setRooms(rooms) {
 export function fetchRooms() {
   return (dispatch) => {
     return getAllRooms().then((data) => {
+      console.log('fetch rooms in actions', data)
       dispatch(setRooms(data))
     })
   }
@@ -32,12 +33,12 @@ export function delRoom(id) {
 
 export function editRoom(id, room) {
   return (dispatch) => {
-      return updateRoom(id, room).then(() => {
+      return updateRoom(id, room).then((updatedRoom) => {
         dispatch({
           type: UPDATE_ROOM,
           payload: { 
             id: id,
-            updatedRoom: room 
+            updatedRoom: updatedRoom 
           }
         })
       })

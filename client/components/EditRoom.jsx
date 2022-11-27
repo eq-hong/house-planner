@@ -12,8 +12,8 @@ function Room() {
   const rooms = useSelector((state) => state.rooms)
   const selectedRoom = rooms.find((found) => found.id == id)
 
-  // console.log('rooms', rooms)
-  // console.log('selectedRoom', selectedRoom)
+  console.log('rooms', rooms)
+  console.log('selectedRoom', selectedRoom)
 
   const [room, setRoom] = useState({
     room_name: '',
@@ -37,14 +37,14 @@ function Room() {
       priority: selectedRoom?.priority || '',
       width: selectedRoom?.width || '',
       length: selectedRoom?.length || '',
-      north: selectedRoom?.north || '',
-      east: selectedRoom?.east || '',
-      west: selectedRoom?.west || '',
-      south: selectedRoom?.south || '',
+      north: Boolean(selectedRoom?.north || ''),
+      east: Boolean(selectedRoom?.east || ''),
+      west: Boolean(selectedRoom?.west || ''),
+      south: Boolean(selectedRoom?.south || ''),
       floor: selectedRoom?.floor || '',
     })
-    console.log('selectedRoom.roomName', selectedRoom?.roomName);
-  }, [])
+    // console.log('selectedRoom.roomName', selectedRoom?.roomName);
+  }, [rooms])
 
   function handleChange(event) {
     setRoom({ ...room, [event.target.name]: event.target.value })
@@ -62,7 +62,7 @@ function Room() {
 // }, [])
 
   // console.log('id', id);
-  console.log('room', room);
+  // console.log('room', room);
 
 
   const style = {
@@ -115,26 +115,30 @@ function Room() {
       navigate('/house')
   }
 
-  const [isCheckedNorth, setIsCheckedNorth] = useState(northWindow)
-  const [isCheckedEast, setIsCheckedEast] = useState(eastWindow)
-  const [isCheckedWest, setIsCheckedWest] = useState(westWindow)
-  const [isCheckedSouth, setIsCheckedSouth] = useState(southWindow)
+  const [isCheckedNorth, setIsCheckedNorth] = useState(selectedRoom?.north)
+  const [isCheckedEast, setIsCheckedEast] = useState(selectedRoom?.east)
+  const [isCheckedWest, setIsCheckedWest] = useState(selectedRoom?.west)
+  const [isCheckedSouth, setIsCheckedSouth] = useState(selectedRoom?.south)
 
-  function handleCheckNorth() {
+  function handleCheckNorth(event) {
     setIsCheckedNorth(!isCheckedNorth)
-    console.log('North checkbox', isCheckedNorth)
+    setRoom({...room, north:!room.north})
+    console.log(event.target, 'event.target');
     return ( isCheckedNorth ?  room.north=false : room.north=true )
   }
   function handleCheckEast() {
     setIsCheckedEast(!isCheckedEast)
+    setRoom({...room, east:!room.east})
     return ( isCheckedEast ?  room.east=false : room.east=true )
   }
   function handleCheckWest() {
     setIsCheckedWest(!isCheckedWest)
+    setRoom({...room, west:!room.west})
     return ( isCheckedWest ?  room.west=false : room.west=true )
   }
   function handleCheckSouth() {
     setIsCheckedSouth(!isCheckedSouth)
+    setRoom({...room, south:!room.south})
     return ( isCheckedSouth ?  room.south=false : room.south=true )
   }
 
@@ -190,7 +194,7 @@ function Room() {
       
         <div className='centre-room-diagram' style={roomDiagram}>
           <div className='room-diagram-flex'>
-            <p className='p-overflow'>{room.roomName}<br></br>{roomArea}sqm</p>
+            <p className='p-overflow'>{room.room_name}<br></br>{roomArea}sqm</p>
           </div>
         </div>
        
