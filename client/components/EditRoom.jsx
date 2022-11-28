@@ -12,8 +12,8 @@ function Room() {
   const rooms = useSelector((state) => state.rooms)
   const selectedRoom = rooms.find((found) => found.id == id)
 
-  console.log('rooms', rooms)
-  console.log('selectedRoom', selectedRoom)
+  // console.log('rooms', rooms)
+  // console.log('selectedRoom', selectedRoom)
 
   const [room, setRoom] = useState({
     room_name: '',
@@ -37,10 +37,10 @@ function Room() {
       priority: selectedRoom?.priority || '',
       width: selectedRoom?.width || '',
       length: selectedRoom?.length || '',
-      north: Boolean(selectedRoom?.north || ''),
-      east: Boolean(selectedRoom?.east || ''),
-      west: Boolean(selectedRoom?.west || ''),
-      south: Boolean(selectedRoom?.south || ''),
+      north: selectedRoom?.north || '',
+      east: selectedRoom?.east || '',
+      west: selectedRoom?.west || '',
+      south: selectedRoom?.south || '',
       floor: selectedRoom?.floor || '',
     })
     // console.log('selectedRoom.roomName', selectedRoom?.roomName);
@@ -50,37 +50,18 @@ function Room() {
     setRoom({ ...room, [event.target.name]: event.target.value })
   }
 
-// useEffect(() => {
-//   getRoom(id)
-//     .then((data) => {
-//       setRoom(data)
-//       // console.log(data);
-//     })
-//     .catch((err) => {
-//       console.log(err)
-//     })
-// }, [])
-
-  // console.log('id', id);
-  // console.log('room', room);
-
-
   const style = {
     marginTop: `2.5%`,
     marginLeft: `2.5%`,
   }
 
-  const northWindow = Boolean(room.north)
-  const eastWindow = Boolean(room.east)
-  const westWindow = Boolean(room.west)
-  const southWindow = Boolean(room.south)
   const roomArea = (room.width)*(room.length)
   const roomWidthPx = (room.width)*50
   const roomLengthPx = (room.length)*50
-  const northWindowDiagram = ( northWindow ? 'dashed' : 'solid')
-  const eastWindowDiagram = ( eastWindow ? 'dashed' : 'solid')
-  const westWindowDiagram = ( westWindow ? 'dashed' : 'solid')
-  const southWindowDiagram = ( southWindow ? 'dashed' : 'solid')
+  const northWindowDiagram = ( room.north ? 'dashed' : 'solid')
+  const eastWindowDiagram = ( room.east ? 'dashed' : 'solid')
+  const westWindowDiagram = ( room.west ? 'dashed' : 'solid')
+  const southWindowDiagram = ( room.south ? 'dashed' : 'solid')
   
   const roomDiagram = {
     border: `#797979`,
@@ -175,10 +156,10 @@ function Room() {
           <option value="Level 2">Level 2</option>
           <option value="Level 3">Level 3</option></select>  <br></br>
       
-        <input type="checkbox" id="north" name="north" onChange={handleCheckNorth} checked={northWindow} value={isCheckedNorth}/> North-facing (Daytime sun)  <br></br>
-        <input type="checkbox" id="east" name="east" onChange={handleCheckEast} checked={eastWindow} value={isCheckedEast}/> East-facing (Morning sun)  <br></br>
-        <input type="checkbox" id="west" name="west" onChange={handleCheckWest} checked={westWindow} value={isCheckedWest}/> West-facing (Afternoon sun)  <br></br>
-        <input type="checkbox" id="south" name="south" onChange={handleCheckSouth} checked={southWindow} value={isCheckedSouth}/> South-facing (Indirect sun)  <br></br>
+        <input type="checkbox" id="north" name="north" onChange={handleCheckNorth} checked={room.north} value={isCheckedNorth}/> North-facing (Daytime sun)  <br></br>
+        <input type="checkbox" id="east" name="east" onChange={handleCheckEast} checked={room.east} value={isCheckedEast}/> East-facing (Morning sun)  <br></br>
+        <input type="checkbox" id="west" name="west" onChange={handleCheckWest} checked={room.west} value={isCheckedWest}/> West-facing (Afternoon sun)  <br></br>
+        <input type="checkbox" id="south" name="south" onChange={handleCheckSouth} checked={room.south} value={isCheckedSouth}/> South-facing (Indirect sun)  <br></br>
 
         <br></br><button onClick={updateRoom}>Update</button>&nbsp;<button onClick={removeRoom}>Delete</button>
       </form>

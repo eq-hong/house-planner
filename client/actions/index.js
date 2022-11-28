@@ -1,8 +1,9 @@
 export const SET_ROOMS = 'SET_ROOMS'
 export const DEL_ROOM = 'DEL_ROOM'
 export const UPDATE_ROOM = 'UPDATE_ROOM'
+export const ADD_ROOM = 'ADD_ROOM'
 
-import { deleteRoom, getAllRooms, updateRoom } from '../apiClient'
+import { deleteRoom, getAllRooms, updateRoom, addNewRoom } from '../apiClient'
 
 export function setRooms(rooms) {
   return {
@@ -33,14 +34,27 @@ export function delRoom(id) {
 
 export function editRoom(id, room) {
   return (dispatch) => {
-      return updateRoom(id, room).then((updatedRoom) => {
-        dispatch({
-          type: UPDATE_ROOM,
-          payload: { 
-            id: id,
-            updatedRoom: updatedRoom 
-          }
-        })
+    return updateRoom(id, room).then((updatedRoom) => {
+      dispatch({
+        type: UPDATE_ROOM,
+        payload: { 
+          id: id,
+          updatedRoom: updatedRoom 
+        }
       })
-    }
+    })
   }
+}
+
+export function addRoom(newRoom) {
+  return (dispatch) => {
+    return addNewRoom(newRoom).then((newRoomInfo) => {
+      console.log(newRoom, 'newRoom inside addNewRoom apiClient')
+      dispatch({
+        type: ADD_ROOM,
+        payload: newRoomInfo,
+      })
+    })
+  }
+}
+

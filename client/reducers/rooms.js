@@ -9,6 +9,8 @@ const roomsReducer = (state = initialRoomState, action) => {
       return state.filter((room) => room.id !== payload)
     case 'UPDATE_ROOM': 
       return state.map((room) => room.id == payload.id ? payload.updatedRoom : room)
+    case 'ADD_ROOM':
+      return [...state, payload]
     default:
       return state
   }
