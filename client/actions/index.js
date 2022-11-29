@@ -2,6 +2,7 @@ export const SET_ROOMS = 'SET_ROOMS'
 export const DEL_ROOM = 'DEL_ROOM'
 export const UPDATE_ROOM = 'UPDATE_ROOM'
 export const ADD_ROOM = 'ADD_ROOM'
+export const NEW_TOTAL_AREA = 'NEW_TOTAL_AREA'
 
 import { deleteRoom, getAllRooms, updateRoom, addNewRoom } from '../apiClient'
 
@@ -58,3 +59,11 @@ export function addRoom(newRoom) {
   }
 }
 
+export function updateTotalArea(newTotalArea){
+  return (dispatch) => {
+    dispatch ({
+    type: NEW_TOTAL_AREA,
+    payload: newTotalArea
+    })
+  }
+}
