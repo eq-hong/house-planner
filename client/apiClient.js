@@ -1,26 +1,6 @@
 import request from 'superagent'
 const serverPrefix = 'http://localhost:3000'
 
- // ARCHIVE //
-
-export function getGreeting() {
-  return request.get('/greeting').then((res) => res.body.greeting)
-}
-
-export function getPokemon() {
-  return request.get(`https://pokeapi.co/api/v2/pokemon/`).then((res) => res.body)
-}
-
-
-export function getPokemonSearch(searchTerm) {
-  return request.get(`https://pokeapi.co/api/v2/pokemon/${searchTerm}`).then((res) => res.body)
-}
-
-// ARCHIVE //
-
-
-// from charlottes-web-log-api START //
-
 export function getAllRooms() {
   return request
     .get(`${serverPrefix}/api/v1/house/all`)
@@ -99,14 +79,3 @@ function validatePostResponse(method, route, post) {
     )
   }
 }
-
-// from charlottes-web-log-api END //
-
-// export function postArea(newArea) {
-//   return request
-//     .post(`${serverPrefix}/api/v1/house/all`)
-//     .send(newArea)
-//     .then((res) => {
-//       return res.body
-//     })
-// }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { fetchRooms, updateTotalArea } from '../actions'
+import { updateTotalArea } from '../actions'
 
 function Calculation(){
   const rooms = useSelector((state) => state.rooms)
@@ -18,7 +18,6 @@ function Calculation(){
 
   useEffect(() => {
     const newTotalArea = rooms?.reduce((previous, room) => {
-      console.log(previous);
       return previous + room.width*room.length
     }, 0)
     dispatch(updateTotalArea(newTotalArea))
@@ -36,7 +35,6 @@ function Calculation(){
   }
 
   function sortByPriority() {
-    // https://stackoverflow.com/questions/65687818/js-sort-array-of-objets-by-specific-string-property-not-ascending-or-descending
     const sortingScheme = [
       "High",
       "Mid",
@@ -58,16 +56,14 @@ function Calculation(){
   const roomsCopy = [...rooms]
   const roomsSorted = roomsCopy?.sort(sortByPriority())
 
-  function filterItems(array, query, value) {
-    // console.log(array, 'array');
-    // console.log(value, 'value');
+  function filterItems(array, query) {
     return array.filter( ( {roomType} ) => roomType.toLowerCase().includes(query.toLowerCase()));
   }
 
   function mapRoom(roomtype) {
     const filteredRoom = filterItems(roomsSorted, roomtype)
    return filteredRoom?.map((oneRoom) => {
-      const { id, roomName, roomType, priority, width, length, } = oneRoom
+      const { id, roomName, priority, width, length, } = oneRoom
       const roomArea = (width)*(length)
       return (
         <div key={id}>
@@ -126,25 +122,3 @@ function Calculation(){
 }
 
 export default Calculation
-
-        
-// const { id, roomName, roomType, roomNotes, priority, width, length, north, east, west, south, floor } = oneRoom
-
-
-  // // https://stackoverflow.com/questions/979256/sorting-an-array-of-objects-by-property-values
-  // const sort_by = (field, reverse, primer) => {
-
-  //   const key = primer ?
-  //     function(x) {
-  //       return primer(x[field])
-  //     } :
-  //     function(x) {
-  //       return x[field]
-  //     };
-  
-  //   reverse = !reverse ? 1 : -1;
-  
-  //   return function(a, b) {
-  //     return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
-  //   }
-  // }

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate  } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { getRoom } from '../apiClient'
-import { fetchRooms, delRoom, editRoom } from '../actions'
+import { delRoom, editRoom } from '../actions'
 
 function Room() {
   const navigate = useNavigate()
@@ -11,9 +10,6 @@ function Room() {
   const dispatch = useDispatch()
   const rooms = useSelector((state) => state.rooms)
   const selectedRoom = rooms.find((found) => found.id == id)
-
-  // console.log('rooms', rooms)
-  // console.log('selectedRoom', selectedRoom)
 
   const [room, setRoom] = useState({
     room_name: '',
@@ -43,7 +39,6 @@ function Room() {
       south: selectedRoom?.south || '',
       floor: selectedRoom?.floor || '',
     })
-    // console.log('selectedRoom.roomName', selectedRoom?.roomName);
   }, [rooms])
 
   function handleChange(event) {
@@ -83,9 +78,6 @@ function Room() {
 
   function removeRoom(evt) {
     evt.preventDefault()
-    //call dispatch with delRoom instead of deleteRoom(Number(id))
-    //won't need the .then and the .catch anymore
-    //after the dispatch, run the navigate
     dispatch(delRoom(id))
     navigate('/house')
   }
@@ -101,10 +93,9 @@ function Room() {
   const [isCheckedWest, setIsCheckedWest] = useState(selectedRoom?.west)
   const [isCheckedSouth, setIsCheckedSouth] = useState(selectedRoom?.south)
 
-  function handleCheckNorth(event) {
+  function handleCheckNorth() {
     setIsCheckedNorth(!isCheckedNorth)
     setRoom({...room, north:!room.north})
-    console.log(event.target, 'event.target');
     return ( isCheckedNorth ?  room.north=false : room.north=true )
   }
   function handleCheckEast() {

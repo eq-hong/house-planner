@@ -16,7 +16,6 @@ export function setRooms(rooms) {
 export function fetchRooms() {
   return (dispatch) => {
     return getAllRooms().then((data) => {
-      console.log('fetch rooms in actions', data)
       dispatch(setRooms(data))
     })
   }
@@ -50,7 +49,6 @@ export function editRoom(id, room) {
 export function addRoom(newRoom) {
   return (dispatch) => {
     return addNewRoom(newRoom).then((newRoomInfo) => {
-      console.log(newRoom, 'newRoom inside addNewRoom apiClient')
       dispatch({
         type: ADD_ROOM,
         payload: newRoomInfo,

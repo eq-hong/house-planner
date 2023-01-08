@@ -11,16 +11,7 @@ server.use(express.json())
 server.use(express.static(path.join(__dirname, './public')))
 server.use(cors('*'))
 
-// Route for house...
 server.use('/api/v1/house', house)
-
-
-server.get('/greeting', (req, res) => {
-  const greetings = ['hola', 'hi', 'hello', 'howdy']
-  let index = Math.floor(Math.random() * greetings.length)
-  console.log(index)
-  res.json({ greeting: greetings[index] })
-})
 
 server.get('/api/v1/affirmation', (req, res) => {
   request

@@ -24,17 +24,8 @@ useEffect(() => {
     })
 }, [])
 
-function handleChange(evt) {
-  setInput(evt.target.value)
-}
-
-function handleSubmit(evt) {
-  evt.preventDefault()
-  setSearchTerm(input)
-}
-
 if (isLoading) return <Spinner />
-if (isError) return <h1>{"Oops can't fetch 'em all today!"}</h1>
+if (isError) return <h1>{"Oops can't fetch 'em today!"}</h1>
 
 return (
 <>

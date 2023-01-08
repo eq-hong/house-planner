@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import request from 'superagent'
-
-import Spinner from './Spinner'
+import { Link } from 'react-router-dom'
 
 import { getAllRooms } from '../apiClient'
 
 function House(){
   const [rooms, setRooms] = useState(null)
-  const navigate = useNavigate()
 
   const style = {
     marginTop: `2.5%`,
@@ -19,7 +15,6 @@ function House(){
     marginBottom: `5px`,
   }
 
-
   useEffect(() => {
     getAllRooms()
       .then((room) => {
@@ -29,9 +24,6 @@ function House(){
         console.log(err)
       })
   }, [])
-  
-  // console.log(rooms);
-
 
   return (
     <>
@@ -39,7 +31,6 @@ function House(){
     <h4>House Planner</h4>
   <br></br>
       {rooms && rooms?.map((oneRoom, i) => {
-        // console.log(Boolean(oneRoom.east))
         const northWindow = Boolean(oneRoom.north)
         const eastWindow = Boolean(oneRoom.east)
         const westWindow = Boolean(oneRoom.west)

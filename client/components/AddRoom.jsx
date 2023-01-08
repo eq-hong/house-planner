@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import request from 'superagent'
+import { useDispatch } from 'react-redux'
 
-import Spinner from './Spinner'
-
-import { addNewRoom } from '../apiClient'
 import { addRoom } from '../actions'
 
 function AddRoom() {

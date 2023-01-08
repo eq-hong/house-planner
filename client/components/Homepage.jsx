@@ -1,8 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import request from 'superagent'
-
-import Spinner from './Spinner'
+import React from 'react'
 
 function Home() {
 
