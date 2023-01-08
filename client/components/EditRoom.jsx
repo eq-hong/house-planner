@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate  } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import request from 'superagent'
-
-import Spinner from './Spinner'
 
 import { getRoom } from '../apiClient'
-import { fetchRooms, delRoom, changeRoom } from '../actions'
+import { fetchRooms, delRoom, editRoom } from '../actions'
 
 function Room() {
   const navigate = useNavigate()
   const { id } = useParams()
   const dispatch = useDispatch()
-  // const rooms = useSelector((state) => state.rooms)
-  // const roomM = rooms.find((found) => found.id == id)
+  const rooms = useSelector((state) => state.rooms)
+  const selectedRoom = rooms.find((found) => found.id == id)
 
-  
   // console.log('rooms', rooms)
-  // console.log('roomM', roomM)
+  // console.log('selectedRoom', selectedRoom)
 
   const [room, setRoom] = useState({
     room_name: '',
@@ -28,28 +24,44 @@ function Room() {
     length: '',
     north: '',
     east: '',
+    west: '',
     south: '',
     floor: '',
   })
 
-  console.log(id);
+  useEffect(() => {
+    setRoom({
+      room_name: selectedRoom?.roomName || '',
+      room_type: selectedRoom?.roomType || '',
+      room_notes: selectedRoom?.roomNotes || '',
+      priority: selectedRoom?.priority || '',
+      width: selectedRoom?.width || '',
+      length: selectedRoom?.length || '',
+      north: selectedRoom?.north || '',
+      east: selectedRoom?.east || '',
+      west: selectedRoom?.west || '',
+      south: selectedRoom?.south || '',
+      floor: selectedRoom?.floor || '',
+    })
+    // console.log('selectedRoom.roomName', selectedRoom?.roomName);
+  }, [rooms])
+
+  function handleChange(event) {
+    setRoom({ ...room, [event.target.name]: event.target.value })
+  }
 
   const style = {
     marginTop: `2.5%`,
     marginLeft: `2.5%`,
   }
 
-  const northWindow = Boolean(room.north)
-  const eastWindow = Boolean(room.east)
-  const westWindow = Boolean(room.west)
-  const southWindow = Boolean(room.south)
   const roomArea = (room.width)*(room.length)
   const roomWidthPx = (room.width)*50
   const roomLengthPx = (room.length)*50
-  const northWindowDiagram = ( northWindow ? 'dashed' : 'solid')
-  const eastWindowDiagram = ( eastWindow ? 'dashed' : 'solid')
-  const westWindowDiagram = ( westWindow ? 'dashed' : 'solid')
-  const southWindowDiagram = ( southWindow ? 'dashed' : 'solid')
+  const northWindowDiagram = ( room.north ? 'dashed' : 'solid')
+  const eastWindowDiagram = ( room.east ? 'dashed' : 'solid')
+  const westWindowDiagram = ( room.west ? 'dashed' : 'solid')
+  const southWindowDiagram = ( room.south ? 'dashed' : 'solid')
   
   const roomDiagram = {
     border: `#797979`,
@@ -68,31 +80,9 @@ function Room() {
     }
   }
 
-  // useEffect(() => {
-  //   dispatch(fetchRooms())
-  // }, [])
-  
-  useEffect(() => {
-    getRoom(id)
-      .then((data) => {
-        setRoom(data)
-        // console.log(data);
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
-
-  console.log(room);
-
-  const [isCheckedNorth, setIsCheckedNorth] = useState(northWindow)
-  const [isCheckedEast, setIsCheckedEast] = useState(eastWindow)
-  const [isCheckedWest, setIsCheckedWest] = useState(westWindow)
-  const [isCheckedSouth, setIsCheckedSouth] = useState(southWindow)
 
   function removeRoom(evt) {
     evt.preventDefault()
-
     //call dispatch with delRoom instead of deleteRoom(Number(id))
     //won't need the .then and the .catch anymore
     //after the dispatch, run the navigate
@@ -100,35 +90,38 @@ function Room() {
     navigate('/house')
   }
 
-  function editRoom(evt){
+  function updateRoom(evt){
     evt.preventDefault()
-      dispatch(changeRoom(id, room))
+      dispatch(editRoom(id, room))
       navigate('/house')
   }
 
-  function handleChange(event) {
-    setRoom({ ...room, [event.target.name]: event.target.value })
-  }
+  const [isCheckedNorth, setIsCheckedNorth] = useState(selectedRoom?.north)
+  const [isCheckedEast, setIsCheckedEast] = useState(selectedRoom?.east)
+  const [isCheckedWest, setIsCheckedWest] = useState(selectedRoom?.west)
+  const [isCheckedSouth, setIsCheckedSouth] = useState(selectedRoom?.south)
 
-  function handleCheckNorth() {
+  function handleCheckNorth(event) {
     setIsCheckedNorth(!isCheckedNorth)
-    console.log('North checkbox', isCheckedNorth)
+    setRoom({...room, north:!room.north})
+    console.log(event.target, 'event.target');
     return ( isCheckedNorth ?  room.north=false : room.north=true )
   }
   function handleCheckEast() {
     setIsCheckedEast(!isCheckedEast)
+    setRoom({...room, east:!room.east})
     return ( isCheckedEast ?  room.east=false : room.east=true )
   }
   function handleCheckWest() {
     setIsCheckedWest(!isCheckedWest)
+    setRoom({...room, west:!room.west})
     return ( isCheckedWest ?  room.west=false : room.west=true )
   }
   function handleCheckSouth() {
     setIsCheckedSouth(!isCheckedSouth)
+    setRoom({...room, south:!room.south})
     return ( isCheckedSouth ?  room.south=false : room.south=true )
   }
-
-  console.log('room', room);
 
 
   return (
@@ -136,9 +129,9 @@ function Room() {
     <section style={style}>
       <h4>Room Form</h4>
       <form>
-        Room Name <br></br> <input name="roomName" onChange={handleChange} value={room.roomName} placeholder="eg. main bedroom" /><br></br>
+        Room Name <br></br> <input name="room_name" onChange={handleChange} value={room.room_name} placeholder="eg. main bedroom" /><br></br>
         
-        Room Type <br></br> <select id="roomType" name="roomType" onChange={handleChange} value={room.roomType}>
+        Room Type <br></br> <select id="room_type" name="room_type" onChange={handleChange} value={room.room_type}>
           <option value="" disabled>Select type</option>
           <option value="Bedroom">Bedroom</option>
           <option value="Bathroom">Bathroom</option>
@@ -146,7 +139,7 @@ function Room() {
           <option value="Kitchen">Kitchen</option>
           <option value="Other">Other</option></select>  <br></br>
         
-        Room Notes <br></br> <textarea name="roomNotes" onChange={handleChange} value={room.roomNotes} placeholder="eg. large main bedroom with ensuite"/> <br></br>
+        Room Notes <br></br> <textarea name="room_notes" onChange={handleChange} value={room.room_notes} placeholder="eg. large main bedroom with ensuite"/> <br></br>
         
         Priority  <br></br> <select id="priority" name="priority" onChange={handleChange} value={room.priority}>
           <option value="" disabled>Select priority</option>
@@ -163,12 +156,12 @@ function Room() {
           <option value="Level 2">Level 2</option>
           <option value="Level 3">Level 3</option></select>  <br></br>
       
-        <input type="checkbox" id="north" name="north" onChange={handleCheckNorth} checked={northWindow} value={isCheckedNorth}/> North-facing (Daytime sun)  <br></br>
-        <input type="checkbox" id="east" name="east" onChange={handleCheckEast} checked={eastWindow} value={isCheckedEast}/> East-facing (Morning sun)  <br></br>
-        <input type="checkbox" id="west" name="west" onChange={handleCheckWest} checked={westWindow} value={isCheckedWest}/> West-facing (Afternoon sun)  <br></br>
-        <input type="checkbox" id="south" name="south" onChange={handleCheckSouth} checked={southWindow} value={isCheckedSouth}/> South-facing (Indirect sun)  <br></br>
+        <input type="checkbox" id="north" name="north" onChange={handleCheckNorth} checked={room.north} value={isCheckedNorth}/> North-facing (Daytime sun)  <br></br>
+        <input type="checkbox" id="east" name="east" onChange={handleCheckEast} checked={room.east} value={isCheckedEast}/> East-facing (Morning sun)  <br></br>
+        <input type="checkbox" id="west" name="west" onChange={handleCheckWest} checked={room.west} value={isCheckedWest}/> West-facing (Afternoon sun)  <br></br>
+        <input type="checkbox" id="south" name="south" onChange={handleCheckSouth} checked={room.south} value={isCheckedSouth}/> South-facing (Indirect sun)  <br></br>
 
-        <br></br><button onClick={editRoom}>Update</button>&nbsp;<button onClick={removeRoom}>Delete</button>
+        <br></br><button onClick={updateRoom}>Update</button>&nbsp;<button onClick={removeRoom}>Delete</button>
       </form>
 
       <div className='add-button'>
@@ -182,7 +175,7 @@ function Room() {
       
         <div className='centre-room-diagram' style={roomDiagram}>
           <div className='room-diagram-flex'>
-            <p className='p-overflow'>{room.roomName}<br></br>{roomArea}sqm</p>
+            <p className='p-overflow'>{room.room_name}<br></br>{roomArea}sqm</p>
           </div>
         </div>
        
@@ -190,6 +183,5 @@ function Room() {
   </>
   )
 }
-
 
 export default Room

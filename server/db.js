@@ -47,9 +47,13 @@ function addRoom(room, db = connection) {
   return db('rooms').insert(room)
 }
 
+// function patchRoom(id, editedRoom, db = connection) {
+//   const { roomName, roomType, roomNotes, priority, width, length, north, east, south, west, floor } = editedRoom
+//   return db('rooms').where('id', id).update({room_name:roomName, room_type:roomType, room_notes:roomNotes, priority, width, length, north, east, west, south, floor })
+// }
+
 function patchRoom(id, editedRoom, db = connection) {
-  const { roomName, roomType, roomNotes, priority, width, length, north, east, south, west, floor } = editedRoom
-  return db('rooms').where('id', id).update({room_name:roomName, room_type:roomType, room_notes:roomNotes, priority, width, length, north, east, west, south, floor })
+  return db('rooms').where('id', id).update(editedRoom)
 }
 
 function deleteRoom(id, db = connection) {

@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 import request from 'superagent'
 
 import Spinner from './Spinner'
 
-import { addRoom } from '../apiClient'
+import { addNewRoom } from '../apiClient'
+import { addRoom } from '../actions'
 
 function AddRoom() {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [newRoom, setNewRoom] = useState({
     room_name: '',
     room_type: '',
@@ -33,7 +36,7 @@ function AddRoom() {
   const roomArea = (newRoom.width)*(newRoom.length)
   const roomWidthPx = (newRoom.width)*50
   const roomLengthPx = (newRoom.length)*50
-  const northWindowDiagram = ( northWindow ? 'dashed' : 'solid')
+  const northWindowDiagram = ( newRoom.north ? 'dashed' : 'solid')
   const eastWindowDiagram = ( eastWindow ? 'dashed' : 'solid')
   const westWindowDiagram = ( westWindow ? 'dashed' : 'solid')
   const southWindowDiagram = ( southWindow ? 'dashed' : 'solid')
@@ -67,7 +70,6 @@ function AddRoom() {
 
   function handleCheckNorth() {
     setIsCheckedNorth(!isCheckedNorth)
-    console.log('North checkbox', isCheckedNorth)
     return ( isCheckedNorth ?  newRoom.north=false : newRoom.north=true )
   }
   function handleCheckEast() {
@@ -83,17 +85,11 @@ function AddRoom() {
     return ( isCheckedSouth ?  newRoom.south=false : newRoom.south=true )
   }
 
-  function addNewRoom(evt){
+  function addANewRoom(evt){
     evt.preventDefault()
-    console.log('addNewRoom', newRoom);
-    return addRoom(newRoom)
-    .then(() => {
-      navigate('/house')
-    })
-    .catch((err) => console.log(err))
+    dispatch(addRoom(newRoom))
+    navigate('/house')
   }
-  
-  console.log('newRoom', newRoom);
 
   return (
     <>
@@ -127,12 +123,12 @@ function AddRoom() {
         <option value="Level 2">Level 2</option>
         <option value="Level 3">Level 3</option></select>  <br></br>
     
-        <input type="checkbox" id="north" name="north" onChange={handleCheckNorth} checked={northWindow} value={isCheckedNorth}/> North-facing (Daytime sun)  <br></br>
+        <input type="checkbox" id="north" name="north" onChange={handleCheckNorth} checked={newRoom.north} value={isCheckedNorth}/> North-facing (Daytime sun)  <br></br>
         <input type="checkbox" id="east" name="east" onChange={handleCheckEast} checked={eastWindow} value={isCheckedEast}/> East-facing (Morning sun)  <br></br>
         <input type="checkbox" id="west" name="west" onChange={handleCheckWest} checked={westWindow} value={isCheckedWest}/> West-facing (Afternoon sun)  <br></br>
         <input type="checkbox" id="south" name="south" onChange={handleCheckSouth} checked={southWindow} value={isCheckedSouth}/> South-facing (Indirect sun)  <br></br>
 
-      <br></br><button onClick={addNewRoom}>Add</button>
+      <br></br><button onClick={addANewRoom}>Add</button>
     </form>
     <div className='add-button'>
      <Link to={`/house`} >

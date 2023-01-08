@@ -32,25 +32,19 @@ export function getAllRooms() {
 }
 
 export function getRoom(id) {
-  // console.log(id);
   return request
     .get(`${serverPrefix}/api/v1/house/${id}`)
     .then((res) => {
-      // console.log(res.body)
       return res.body
     })
     .catch(errorHandler('GET', 'api/v1/house/:id'))
 }
 
-export function addRoom(newRoom) {
-  console.log('console.log inside addRoom apiClient')
-  // console.log(newRoom)
+export function addNewRoom(newRoom) {
   return request
     .post(`${serverPrefix}/api/v1/house/all`)
     .send(newRoom)
     .then((res) => {
-      console.log('inside .then');
-      console.log(res.body);
       return res.body
     })
     .catch(errorHandler('POST', '/api/v1/house'))
@@ -106,6 +100,13 @@ function validatePostResponse(method, route, post) {
   }
 }
 
-
-
 // from charlottes-web-log-api END //
+
+// export function postArea(newArea) {
+//   return request
+//     .post(`${serverPrefix}/api/v1/house/all`)
+//     .send(newArea)
+//     .then((res) => {
+//       return res.body
+//     })
+// }

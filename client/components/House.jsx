@@ -30,7 +30,7 @@ function House(){
       })
   }, [])
   
-  console.log(rooms);
+  // console.log(rooms);
 
 
   return (
