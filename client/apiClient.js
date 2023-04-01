@@ -65,17 +65,3 @@ function validateNoSnakeCase(response) {
     throw Error('Error: you should not be returning properties in snake_case')
   }
 }
-
-function validatePostResponse(method, route, post) {
-  if (!post) {
-    throw Error(`Error: ${method} ${route} should return a blog post`)
-  }
-
-  const { title, text } = post
-
-  if (!title || !text) {
-    throw Error(
-      `Error: ${method} ${route} is not returning a correct blog post`
-    )
-  }
-}

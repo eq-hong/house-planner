@@ -52,7 +52,12 @@ function Calculation(){
     }
   }
 
-  const buildCostEstimate = new Intl.NumberFormat('en-NZ', { style: 'currency', currency: 'NZD' }).format(totalArea*buildCostSqm)
+  function roundToTwo(num) {
+    return +(Math.round(num + "e+2")  + "e-2");
+  }
+
+  const roundedTotalArea = roundToTwo(totalArea)
+  const buildCostEstimate = new Intl.NumberFormat('en-NZ', { style: 'currency', currency: 'NZD' }).format(roundedTotalArea*buildCostSqm)
   const roomsCopy = [...rooms]
   const roomsSorted = roomsCopy?.sort(sortByPriority())
 
@@ -60,8 +65,8 @@ function Calculation(){
     return array.filter( ( {roomType} ) => roomType.toLowerCase().includes(query.toLowerCase()));
   }
 
-  function mapRoom(roomtype) {
-    const filteredRoom = filterItems(roomsSorted, roomtype)
+  function mapRoom(roomType) {
+    const filteredRoom = filterItems(roomsSorted, roomType)
    return filteredRoom?.map((oneRoom) => {
       const { id, roomName, priority, width, length, } = oneRoom
       const roomArea = (width)*(length)
@@ -70,7 +75,7 @@ function Calculation(){
           {roomArea}sqm ({roomName}, {priority}) 
         </div>
       )
-      })
+    })
   }
 
   return(
@@ -98,7 +103,7 @@ function Calculation(){
     <p></p>
 
     <br></br>
-    <h5>Total area | {totalArea}sqm</h5>
+    <h5>Total area | {roundedTotalArea}sqm</h5>
     Build cost per sqm = {new Intl.NumberFormat('en-NZ', { style: 'currency', currency: 'NZD' }).format(buildCostSqm)}
     <p>Approx. build cost = <b>{buildCostEstimate}</b></p>
 
