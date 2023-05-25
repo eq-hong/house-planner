@@ -5,14 +5,14 @@ A simple tool for individuals to plan and design their ideal home. With House Pl
 [View on my portfolio](https://eq-hong.github.io/portfolio/houseplanner "House Planner")
 
 ## Features
-⋅⋅* **Room Customisation** Easily input and customize the desired rooms of your property, including sizes, floor location, and window orientation. Whether it's bedrooms, living rooms, kitchens, or any other space, you can tailor each room to your specific needs.
-⋅⋅* **Budget Estimation** Get an estimated budget for your house design based on the chosen rooms and their features. This feature helps you make informed decisions and stay within your financial limits during the planning phase.
+  * **Room Customisation** Easily input and customize the desired rooms of your property, including sizes, floor location, and window orientation. Whether it's bedrooms, living rooms, kitchens, or any other space, you can tailor each room to your specific needs.
+  * **Budget Estimation** Get an estimated budget for your house design based on the chosen rooms and their features. This feature helps you make informed decisions and stay within your financial limits during the planning phase.
 
 ## Technology Stack
-⋅⋅* Node.js
-⋅⋅* React
-⋅⋅* Redux
-⋅⋅* Knex.js
-⋅⋅* sqlite3
-⋅⋅* Express.js
-⋅⋅* SuperAgent
+  * Node.js
+  * React
+  * Redux
+  * Knex.js
+  * sqlite3
+  * Express.js
+  * SuperAgent
