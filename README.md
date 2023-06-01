@@ -6,7 +6,7 @@ A simple tool for individuals to plan and design their ideal home. With House Pl
 ## Purpose
   * **Learning JavaScript:** The project serves as a practical learning experience to deepen my understanding of JavaScript. House Planner is an ongoing project, I aim to strengthen my knowledge of JavaScript concepts, frameworks and libraries.
   * **Full-Stack Development:** House Planner provides the opportunity to practice full-stack development skills. This includes implementing front-end functionality with JavaScript, HTML, and CSS, as well as back-end functionality using technologies such as Node.js, Express, and a database system.
-  * **Simplifying Architectural Planning:** The goal of House Planner is to simplify initial planning process of architectural design. By offering an intuitive and user-friendly tool, individuals can easily input their desired rooms, customize various features, and visualize their ideal home layout. The estimated budget feature helps users make informed decisions during the planning phase.
+  * **Simplifying Architectural Planning:** The goal of House Planner is to simplify the initial planning process of architectural design. By offering an intuitive and user-friendly tool, individuals can easily input their desired rooms, customize various features, and visualize their ideal home layout. The estimated budget feature helps users make informed decisions during the planning phase.
 
 ## Features
   * **Room Customisation** Easily input and customize the desired rooms of your property, including sizes, floor location, and window orientation. Whether it's bedrooms, living rooms, kitchens, or any other space, you can tailor each room to your specific needs.
