@@ -1,5 +1,5 @@
 # House planner
-A simple tool for individuals to plan and design their ideal home. With House Planner, you can easily input the desired rooms of your property and customize various features to create the perfect layout. Additionally, the tool provides you with an estimated build cost for budgeting based on your choices, helping you keep track with your financial goals.
+A simple tool for individuals to plan and design their ideal home. With House Planner, you can easily input the desired rooms of your property and customize various features to create your preferred layout. Additionally, the tool provides you with an estimated build cost for budgeting based on your choices, helping you keep track with your financial goals.
 
 [View on my portfolio](https://eq-hong.github.io/portfolio/houseplanner "House Planner")
 
